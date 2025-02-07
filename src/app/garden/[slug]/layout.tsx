@@ -5,7 +5,6 @@ export default function MdxLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="container mx-auto px-4 py-12">
       <article className="cartoon-border subtle-card-texture relative z-10 rounded-lg border-green-500 bg-white p-8">
-        <div className="halftone-bg absolute inset-0 rounded-lg"></div>
         <div className="mb-4 font-bold text-green-600">🌱 Garden Note</div>
         <h1 className="relative z-10 mb-4 text-4xl font-bold">
           {/* {frontMatter.title} */}
