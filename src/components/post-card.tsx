@@ -24,8 +24,9 @@ export default function PostCard({ post }: PostCardProps) {
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      style={{ height: "100%" }} // Set height to 100%
     >
-      <div className="relative z-10 bg-white bg-opacity-90 p-6">
+      <div className="relative z-10 flex h-full flex-col bg-white bg-opacity-90 p-6">
         <div
           className={`cartoon-border mb-4 h-16 w-16 rounded-full ${getCategoryColor(post.category)} flex items-center justify-center`}
         >
@@ -35,8 +36,9 @@ export default function PostCard({ post }: PostCardProps) {
           {post.category}
         </span>
         <h2 className="mb-2 text-2xl font-bold text-gray-900">{post.title}</h2>
-        <p className="mb-4 text-gray-700">{post.excerpt}</p>
-        <div className="flex items-center justify-between">
+        <p className="mb-4 flex-grow text-gray-700">{post.excerpt}</p>{" "}
+        <div className="mt-auto flex items-center justify-between">
+          {" "}
           <span className="text-sm text-gray-500">{post.date}</span>
           <Link
             href={"/blog/" + post.id}
