@@ -8,7 +8,7 @@ export default function About() {
         <h1 className="wobble mb-6 text-center text-4xl font-bold">About Me</h1>
         <div className="mb-8 flex flex-col items-center md:flex-row">
           <Image
-            src="/placeholder.svg"
+            src="https://github.com/dmenezesgabriel.png"
             alt="Cartoon avatar of the blog author"
             width={200}
             height={200}
