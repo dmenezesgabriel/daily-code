@@ -2,11 +2,11 @@ import Link from "next/link";
 
 import NoteCard from "@/components/note-card";
 import PostGrid from "@/components/post-grid";
-import { getContent } from "@/utils/getContent";
+import { getAllFrontMatters } from "@/utils/front-matter";
 
 export default function Home() {
-  const posts = getContent("posts");
-  const notes = getContent("notes");
+  const posts = getAllFrontMatters("posts");
+  const notes = getAllFrontMatters("notes");
 
   return (
     <div className="container relative mx-auto overflow-hidden px-4 py-12">

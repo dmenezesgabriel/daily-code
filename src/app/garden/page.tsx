@@ -1,8 +1,8 @@
 import NoteCard from "@/components/note-card";
-import { getContent } from "@/utils/getContent";
+import { getAllFrontMatters } from "@/utils/front-matter";
 
 export default function GardenPage() {
-  const notes = getContent("notes");
+  const notes = getAllFrontMatters("notes");
 
   return (
     <div className="container relative mx-auto overflow-hidden px-4 py-12">
