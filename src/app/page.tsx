@@ -10,7 +10,6 @@ export default function Home() {
 
   return (
     <div className="container relative mx-auto overflow-hidden px-4 py-12">
-      <div className="halftone-bg absolute inset-0" />
       <h1 className="wobble relative z-10 mb-12 text-center text-6xl font-bold text-gray-900">
         Breaking News!
       </h1>

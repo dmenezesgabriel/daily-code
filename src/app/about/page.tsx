@@ -3,7 +3,6 @@ import Image from "next/image";
 export default function About() {
   return (
     <div className="container relative mx-auto overflow-hidden px-4 py-12">
-      <div className="halftone-bg absolute inset-0" />
       <div className="cartoon-border subtle-card-texture relative z-10 rounded-lg bg-white p-8">
         <h1 className="wobble mb-6 text-center text-4xl font-bold">About Me</h1>
         <div className="mb-8 flex flex-col items-center md:flex-row">

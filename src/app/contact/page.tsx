@@ -1,7 +1,6 @@
 export default function Contact() {
   return (
     <div className="container relative mx-auto overflow-hidden px-4 py-12">
-      <div className="halftone-bg absolute inset-0"></div>
       <div className="cartoon-border subtle-card-texture relative z-10 rounded-lg bg-white p-8">
         <h1 className="wobble mb-6 text-center text-4xl font-bold">
           Contact Me
