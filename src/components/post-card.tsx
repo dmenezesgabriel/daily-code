@@ -19,12 +19,11 @@ export default function PostCard({ post }: PostCardProps) {
 
   return (
     <div
-      className={`cartoon-border halftone-overlay subtle-card-texture relative overflow-hidden rounded-lg bg-white transition-all duration-300 ease-in-out ${
+      className={`cartoon-border halftone-overlay subtle-card-texture relative h-full overflow-hidden rounded-lg bg-white transition-all duration-300 ease-in-out ${
         isHovered ? "-translate-y-2 scale-105 transform shadow-xl" : "shadow-md"
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      style={{ height: "100%" }} // Set height to 100%
     >
       <div className="relative z-10 flex h-full flex-col bg-white bg-opacity-90 p-6">
         <div
