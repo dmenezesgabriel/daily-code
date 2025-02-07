@@ -1,43 +1,8 @@
-import fs from "fs";
-import matter from "gray-matter";
-import path from "path";
-
 import NoteCard from "@/components/note-card";
-
-type Note = {
-  id: string;
-  title: string;
-  date: string;
-  category: string;
-  type: "garden";
-};
-
-function getGardenNotes(): Note[] {
-  const files = fs.readdirSync(
-    path.join(process.cwd(), "src/content/notes"),
-    "utf-8",
-  );
-  const notes = files.map((filename) => {
-    const markdownWithMeta = fs.readFileSync(
-      path.join(process.cwd(), "src/content/notes", filename),
-      "utf-8",
-    );
-    const { data: frontMatter } = matter(markdownWithMeta);
-    return {
-      id: filename.replace(".mdx", ""),
-      title: frontMatter.title,
-      date: frontMatter.date,
-      category: frontMatter.category,
-      type: "garden",
-    };
-  });
-  return notes.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-  );
-}
+import { getContent } from "@/utils/getContent";
 
 export default function GardenPage() {
-  const notes = getGardenNotes();
+  const notes = getContent("notes");
 
   return (
     <div className="container relative mx-auto overflow-hidden px-4 py-12">

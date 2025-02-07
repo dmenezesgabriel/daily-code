@@ -6,7 +6,6 @@ type Note = {
   title: string;
   date: string;
   category: string;
-  type: "garden";
 };
 
 type NoteCardProps = {

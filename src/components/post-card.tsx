@@ -60,7 +60,7 @@ export function PostCardFooter({
   postId,
 }: {
   date: string;
-  postId: number;
+  postId: string;
 }) {
   return (
     <div className="mt-auto flex items-center justify-between">

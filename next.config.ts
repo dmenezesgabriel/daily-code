@@ -4,6 +4,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -12,6 +13,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  output: "export",
 };
 
 const withMDX = createMDX({
