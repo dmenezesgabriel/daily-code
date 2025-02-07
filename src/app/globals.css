@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;600&display=swap");
-
 :root {
   --foreground-rgb: 51, 51, 51;
   --background-start-rgb: 253, 247, 237;

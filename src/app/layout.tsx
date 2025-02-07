@@ -1,16 +1,17 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Bangers, Inter } from "next/font/google";
 import type React from "react";
 
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const playfair = Playfair_Display({
+const bangers = Bangers({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  weight: "400",
+  variable: "--font-bangers",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${playfair.variable} flex min-h-screen flex-col font-sans`}
+        className={`${inter.variable} ${bangers.variable} flex min-h-screen flex-col font-sans`}
       >
         <div className="flex flex-grow flex-col">
           <Header />
