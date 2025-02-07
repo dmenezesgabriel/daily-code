@@ -2,7 +2,8 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="cartoon-border halftone-overlay relative overflow-hidden bg-yellow-300 p-6 text-gray-900">
+    <header className="cartoon-border relative overflow-hidden bg-yellow-300 p-6 text-gray-900">
+      <div className="halftone-bg absolute inset-0" />
       <div className="container relative z-10 mx-auto flex flex-col items-center justify-between md:flex-row">
         <Link
           href="/"

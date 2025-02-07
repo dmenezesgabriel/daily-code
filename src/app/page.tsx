@@ -90,10 +90,11 @@ export default function Home() {
 
   return (
     <div className="container relative mx-auto overflow-hidden px-4 py-12">
-      <div className="halftone-bg inset absolute"></div>
-      <h1 className="wobble relative mb-12 text-center text-6xl font-bold text-gray-900">
+      <div className="halftone-bg absolute inset-0" />
+      <h1 className="wobble relative z-10 mb-12 text-center text-6xl font-bold text-gray-900">
         Breaking News!
       </h1>
+
       <div className="relative z-10 mx-auto max-w-4xl">
         <SearchBar onSearch={setSearchQuery} />
 
@@ -113,6 +114,7 @@ export default function Home() {
           ))}
         </div>
       </div>
+
       <div className="cartoon-border subtle-card-texture relative z-10 rounded-lg bg-white p-8">
         {filteredPosts.length > 0 ? (
           <PostGrid posts={filteredPosts} />
@@ -122,6 +124,7 @@ export default function Home() {
           </p>
         )}
       </div>
+
       <div className="cartoon-border subtle-card-texture relative z-10 mt-16 rounded-lg bg-green-100 p-8">
         <h2 className="wobble mb-8 text-center text-4xl font-bold text-green-800">
           Digital Garden 🌱
@@ -140,6 +143,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
+
       <div className="mt-12 text-center">
         <Link
           href="/about"

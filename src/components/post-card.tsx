@@ -10,7 +10,7 @@ export default function PostCard({ children }: PostCardProps) {
 
   return (
     <div
-      className={`cartoon-border halftone-overlay subtle-card-texture relative h-full overflow-hidden rounded-lg bg-white transition-all duration-300 ease-in-out ${
+      className={`cartoon-border subtle-card-texture relative h-full overflow-hidden rounded-lg bg-white transition-all duration-300 ease-in-out ${
         isHovered ? "-translate-y-2 scale-105 transform shadow-xl" : "shadow-md"
       }`}
       onMouseEnter={() => setIsHovered(true)}

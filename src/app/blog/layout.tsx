@@ -7,7 +7,7 @@ export default function MdxLayout({ children }: { children: React.ReactNode }) {
       <article
         className={`cartoon-border subtle-card-texture relative z-10 rounded-lg bg-white p-8`}
       >
-        <div className="halftone-bg absolute inset-0 rounded-lg"></div>
+        <div className="halftone-bg absolute inset-0 rounded-lg" />
         <h1 className="relative z-10 mb-4 text-4xl font-bold">
           {/* {frontMatter.title} */}
         </h1>
