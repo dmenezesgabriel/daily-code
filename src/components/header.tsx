@@ -9,7 +9,7 @@ export default function Header() {
           href="/"
           className="wobble mb-4 text-4xl font-bold transition-colors hover:text-red-600 md:mb-0"
         >
-          The Daily Scoop
+          O Código Diário
         </Link>
         <nav>
           <ul className="flex space-x-6">
@@ -26,7 +26,7 @@ export default function Header() {
                 href="/about"
                 className="text-xl transition-colors hover:text-red-600"
               >
-                About
+                Sobre
               </Link>
             </li>
             <li>
@@ -34,7 +34,7 @@ export default function Header() {
                 href="/contact"
                 className="text-xl transition-colors hover:text-red-600"
               >
-                Contact
+                Contato
               </Link>
             </li>
             <li>
@@ -42,7 +42,7 @@ export default function Header() {
                 href="/garden"
                 className="text-xl transition-colors hover:text-green-600"
               >
-                Garden
+                Jardim
               </Link>
             </li>
           </ul>

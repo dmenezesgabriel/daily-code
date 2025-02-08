@@ -34,7 +34,7 @@ export default function SearchBar({
       <div className="relative">
         <input
           type="text"
-          placeholder="Search articles..."
+          placeholder="Quero saber mais sobre..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className={cn(

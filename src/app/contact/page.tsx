@@ -68,8 +68,8 @@ export default function Contact() {
             Psst! Secret Message!
           </h3>
           <p className="text-center">
-            If you made it this far, you're officially awesome! Here's a virtual
-            high-five! ✋
+            If you made it this far, you&apos;re officially awesome! Here&apos;s
+            a virtual high-five! ✋
           </p>
         </div>
       </div>

@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="halftone-bg absolute inset-0" />
       <div className="container relative z-10 mx-auto text-center">
         <p className="text-xl">
-          &copy; {year} The Daily Scoop. All scoops reserved.
+          &copy; {year} O Código Diário. Todo conhecimento compartilhado.
         </p>
         <div className="mt-4 flex justify-center space-x-4">
           <Link
