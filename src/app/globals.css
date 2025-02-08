@@ -168,6 +168,8 @@ pre code {
   border: 3px solid #000;
   box-shadow: 5px 5px 0px #000;
   transition: all 0.3s ease-in-out;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .shiki code {
