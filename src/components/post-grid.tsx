@@ -72,7 +72,7 @@ export default function PostGrid({ posts }: PostGridProps) {
       <div className="cartoon-border subtle-card-texture relative z-10 rounded-lg bg-white p-8">
         {filteredPosts.length > 0 ? (
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post) => (
+            {filteredPosts.map((post) => (
               <div key={post.id} className="pop-up-hover">
                 <PostCard>
                   <PostCardIcon category={post.category}>

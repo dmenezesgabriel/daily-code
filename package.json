@@ -21,11 +21,13 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "remark-frontmatter": "5.0.0",
+    "shiki": "2.3.2",
     "tailwind-merge": "3.0.1",
     "unist-util-remove": "4.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@shikijs/twoslash": "2.3.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
