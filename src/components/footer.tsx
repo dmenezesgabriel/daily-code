@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="cartoon-border relative mt-12 overflow-hidden bg-yellow-300 p-6 text-gray-900">
+    <footer className="cartoon-border relative overflow-hidden bg-yellow-300 p-6 text-gray-900">
       <div className="halftone-bg absolute inset-0" />
       <div className="container relative z-10 mx-auto text-center">
         <p className="text-xl">

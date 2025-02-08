@@ -8,19 +8,20 @@ export default function About() {
         <div className="mb-8 flex flex-col items-center md:flex-row">
           <Image
             src="https://github.com/dmenezesgabriel.png"
-            alt="Cartoon avatar of the blog author"
+            alt="Avatar"
             width={200}
             height={200}
             className="cartoon-border mb-4 rounded-full md:mb-0 md:mr-8"
           />
           <div>
             <h2 className="mb-4 text-2xl font-bold">
-              Hi, I'm Scoop McGoop! 👋
+              Hi, I&apos;m Scoop McGoop! 👋
             </h2>
             <p className="mb-4 text-lg">
               Chief Chuckle Correspondent and Pun-dit Extraordinaire at The
-              Daily Scoop. I'm here to serve you the hottest, most hilarious
-              tech news, garnished with a side of wit and a sprinkle of geek!
+              Daily Scoop. I&apos;m here to serve you the hottest, most
+              hilarious tech news, garnished with a side of wit and a sprinkle
+              of geek!
             </p>
           </div>
         </div>
@@ -35,7 +36,7 @@ export default function About() {
         <p className="mb-4">
           To make the world of web development a little bit funnier, one article
           at a time. I believe that laughter is the best medicine (except for
-          actual medicine when you're sick), and that even the most serious
+          actual medicine when you&apos;re sick), and that even the most serious
           coder needs a good chuckle now and then.
         </p>
         <div className="cartoon-border rounded-lg bg-pink-200 p-4">
