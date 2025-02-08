@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 
 import SearchBar from "@/components/search-bar";
 
+import Pagination from "./pagination";
 import PostCard, {
   PostCardCategory,
   PostCardExcerpt,
@@ -23,9 +24,12 @@ type Post = {
 
 type PostGridProps = {
   posts: Post[];
+  currentPage: number;
 };
 
-export default function PostGrid({ posts }: PostGridProps) {
+const POSTS_PER_PAGE = 6;
+
+export default function PostGrid({ posts, currentPage }: PostGridProps) {
   const [filter, setFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -46,6 +50,12 @@ export default function PostGrid({ posts }: PostGridProps) {
       </p>
     );
   }
+
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  const paginatedPosts = filteredPosts.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE,
+  );
 
   return (
     <>
@@ -70,22 +80,25 @@ export default function PostGrid({ posts }: PostGridProps) {
       </div>
 
       <div className="cartoon-border subtle-card-texture relative z-10 rounded-lg bg-white p-8">
-        {filteredPosts.length > 0 ? (
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {filteredPosts.map((post) => (
-              <div key={post.id} className="pop-up-hover">
-                <PostCard>
-                  <PostCardIcon category={post.category}>
-                    {getCategoryIcon(post.category)}
-                  </PostCardIcon>
-                  <PostCardCategory>{post.category}</PostCardCategory>
-                  <PostCardTitle>{post.title}</PostCardTitle>
-                  <PostCardExcerpt>{post.excerpt}</PostCardExcerpt>
-                  <PostCardFooter date={post.date} postId={post.id} />
-                </PostCard>
-              </div>
-            ))}
-          </div>
+        {paginatedPosts.length > 0 ? (
+          <>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {paginatedPosts.map((post) => (
+                <div key={post.id} className="pop-up-hover">
+                  <PostCard>
+                    <PostCardIcon category={post.category}>
+                      {getCategoryIcon(post.category)}
+                    </PostCardIcon>
+                    <PostCardCategory>{post.category}</PostCardCategory>
+                    <PostCardTitle>{post.title}</PostCardTitle>
+                    <PostCardExcerpt>{post.excerpt}</PostCardExcerpt>
+                    <PostCardFooter date={post.date} postId={post.id} />
+                  </PostCard>
+                </div>
+              ))}
+            </div>
+            <Pagination currentPage={currentPage} totalPages={totalPages} />
+          </>
         ) : (
           <p className="text-center text-xl text-gray-600">
             Stop the presses! No news found. Try another scoop!

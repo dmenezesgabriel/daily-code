@@ -4,7 +4,12 @@ import NoteCard from "@/components/note-card";
 import PostGrid from "@/components/post-grid";
 import { getAllFrontMatters } from "@/utils/front-matter";
 
-export default function Home() {
+export default function Home({
+  searchParams,
+}: {
+  searchParams: { page?: string };
+}) {
+  const currentPage = Number(searchParams.page) || 1;
   const posts = getAllFrontMatters("posts");
   const notes = getAllFrontMatters("notes");
 
@@ -14,7 +19,7 @@ export default function Home() {
         Breaking News!
       </h1>
 
-      <PostGrid posts={posts} />
+      <PostGrid posts={posts} currentPage={currentPage} />
 
       <div className="cartoon-border subtle-card-texture relative z-10 mt-16 rounded-lg bg-green-100 p-8">
         <h2 className="wobble mb-8 text-center text-4xl font-bold text-green-800">
