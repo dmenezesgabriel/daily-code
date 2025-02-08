@@ -1,9 +1,11 @@
+import TailwindCssTypography from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
 
 export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/content/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -12,7 +14,15 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      typography: () => ({
+        DEFAULT: {
+          css: {
+            minWidth: "80%",
+            a: { textDecoration: "none" },
+          },
+        },
+      }),
     },
   },
-  plugins: [],
+  plugins: [TailwindCssTypography],
 } satisfies Config;
