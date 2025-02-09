@@ -34,11 +34,11 @@ export function getAllFrontMatters(folder: string): Content[] {
     path.join(process.cwd(), "src/content", folder),
     "utf-8",
   );
-  const content = files.map((filename) => {
+  const frontMatters = files.map((filename) => {
     return getFileFrontMatter(folder, filename);
   });
 
-  return content.sort(
+  return frontMatters.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
 }

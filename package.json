@@ -3,17 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "embeddings": "tsx scripts/generate-embeddings.ts",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@huggingface/transformers": "3.3.3",
     "@mdx-js/loader": "3.1.0",
     "@mdx-js/react": "3.1.0",
     "@next/mdx": "15.1.6",
     "@tailwindcss/typography": "0.5.16",
-    "@types/mdx": "2.0.13",
     "clsx": "2.1.1",
     "gray-matter": "4.0.3",
     "hast-util-to-jsx-runtime": "2.3.2",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@shikijs/twoslash": "2.3.2",
+    "@types/mdx": "2.0.13",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
