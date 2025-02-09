@@ -3,6 +3,17 @@ import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
 
+function splitText(content: string, chunkSize: number = 3): string[] {
+  const sentences = content.split(/(?<=[.!?])\s+/); // Splits by sentence
+  const chunks: string[] = [];
+
+  for (let i = 0; i < sentences.length; i += chunkSize) {
+    chunks.push(sentences.slice(i, i + chunkSize).join(" "));
+  }
+
+  return chunks;
+}
+
 async function main() {
   const embeddingsFile = path.join(process.cwd(), "public", "embeddings.json");
   const embedder = await pipeline(
@@ -15,28 +26,35 @@ async function main() {
     "utf-8",
   );
 
-  const posts = files.map((filename) => {
+  const embeddings: Record<
+    string,
+    { textChunks: string[]; chunkEmbeddings: number[][] }
+  > = {};
+
+  for (const filename of files) {
     const markdownWithMeta = fs.readFileSync(
-      path.join(process.cwd(), "src/content/", "posts", filename),
+      path.join(process.cwd(), "src/content/posts", filename),
       "utf-8",
     );
-
     const { content } = matter(markdownWithMeta);
 
-    return { slug: filename.replace(".mdx", ""), content };
-  });
+    const slug = filename.replace(".mdx", "");
+    const textChunks = splitText(content);
 
-  const embeddings: Record<string, number[]> = {};
+    const chunkEmbeddings: number[][] = [];
+    for (const chunk of textChunks) {
+      const embedding = await embedder(chunk, {
+        pooling: "mean",
+        normalize: true,
+      });
+      chunkEmbeddings.push(Array.from(embedding.data));
+    }
 
-  for (const post of posts) {
-    const embedding = await embedder(post.content, {
-      pooling: "mean",
-      normalize: true,
-    });
-    embeddings[post.slug] = Array.from(embedding.data);
+    embeddings[slug] = { textChunks, chunkEmbeddings };
   }
 
   fs.writeFileSync(embeddingsFile, JSON.stringify(embeddings, null, 2));
+  console.log("Embeddings generated!");
 }
 
-main().then(() => console.log("embeddings generated"));
+main();

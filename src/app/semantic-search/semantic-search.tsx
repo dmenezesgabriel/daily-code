@@ -29,15 +29,32 @@ export function SemanticSearch() {
   const [ready, setReady] = useState(null);
   const [status, setStatus] = useState("Loading...");
   const [progress, setProgress] = useState(0);
-  const [embeddings, setEmbeddings] = useState<Record<string, number[]>[]>([]);
+  const [embeddings, setEmbeddings] = useState<Record<
+    string,
+    { textChunks: string[]; chunkEmbeddings: number[][] }
+  > | null>(null);
 
   const worker = useRef(null);
 
-  async function search(queryEmbedding: string) {
-    const scores = Object.entries(embeddings).map(([slug, emb]) => ({
-      slug,
-      score: cosineSimilarity(queryEmbedding, emb),
-    }));
+  async function search(queryEmbedding: number[]) {
+    if (!embeddings) return;
+
+    const scores = Object.entries(embeddings).map(
+      ([slug, { textChunks, chunkEmbeddings }]) => {
+        let bestMatch = { text: "", score: 0 };
+
+        for (let i = 0; i < chunkEmbeddings.length; i++) {
+          const score = cosineSimilarity(queryEmbedding, chunkEmbeddings[i]);
+
+          if (score > bestMatch.score) {
+            bestMatch = { text: textChunks[i], score };
+          }
+        }
+
+        return { slug, score: bestMatch.score, text: bestMatch.text };
+      },
+    );
+
     scores.sort((a, b) => b.score - a.score);
     setResult(scores.filter((r) => r.score > 0.5));
   }
@@ -125,10 +142,22 @@ export function SemanticSearch() {
         </div>
       )}
 
-      {ready !== null && (
-        <pre className="rounded bg-gray-100 p-2">
-          {ready && result && JSON.stringify(result, null, 2)}
-        </pre>
+      {ready !== null && result && (
+        <div className="mt-4 w-full max-w-xs text-left">
+          {result.map(({ slug, score, text }) => (
+            <div key={slug} className="mb-4 rounded border p-4 shadow">
+              <h2 className="text-lg font-semibold">
+                <a
+                  href={`/blog/${slug}`}
+                  className="text-blue-600 hover:underline"
+                >
+                  {slug} ({score.toFixed(2)})
+                </a>
+              </h2>
+              <p className="mt-2 text-sm text-gray-700">"{text}"</p>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );
