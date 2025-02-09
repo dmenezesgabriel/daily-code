@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bangers;
+  }
+}
+
 :root {
   --foreground-rgb: 51, 51, 51;
   --background-start-rgb: 253, 247, 237;
@@ -16,16 +27,6 @@ body {
     rgb(var(--background-end-rgb))
   );
   font-family: "Poppins", sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Bangers", cursive;
-  letter-spacing: 1px;
 }
 
 .cartoon-border {

@@ -10,6 +10,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        bangers: "var(--font-bangers)",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
