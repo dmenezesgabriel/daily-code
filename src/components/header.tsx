@@ -1,8 +1,15 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+  const pathname = usePathname();
+
+  const isActive = (href: string) => pathname === href;
+
   return (
-    <header className="cartoon-border relative overflow-hidden bg-yellow-300 p-6 text-gray-900">
+    <header className="cartoon-border overflow-hidden bg-yellow-300 p-6 text-gray-900">
       <div className="halftone-bg absolute inset-0" />
       <div className="container relative z-10 mx-auto flex flex-col items-center justify-between md:flex-row">
         <Link
@@ -16,7 +23,7 @@ export default function Header() {
             <li>
               <Link
                 href="/"
-                className="text-xl transition-colors hover:text-red-600"
+                className={`text-xl transition-colors ${isActive("/") ? "active-link" : ""}`}
               >
                 Home
               </Link>
@@ -24,7 +31,7 @@ export default function Header() {
             <li>
               <Link
                 href="/about"
-                className="text-xl transition-colors hover:text-red-600"
+                className={`text-xl transition-colors ${isActive("/about") ? "active-link" : ""}`}
               >
                 Sobre
               </Link>
@@ -32,7 +39,7 @@ export default function Header() {
             <li>
               <Link
                 href="/contact"
-                className="text-xl transition-colors hover:text-red-600"
+                className={`text-xl transition-colors ${isActive("/contact") ? "active-link" : ""}`}
               >
                 Contato
               </Link>
@@ -40,7 +47,7 @@ export default function Header() {
             <li>
               <Link
                 href="/garden"
-                className="text-xl transition-colors hover:text-green-600"
+                className={`text-xl transition-colors hover:text-green-600 ${isActive("/garden") ? "active-link" : ""}`}
               >
                 Jardim
               </Link>

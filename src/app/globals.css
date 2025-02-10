@@ -39,16 +39,6 @@
   box-shadow: 2px 2px 0px #000;
 }
 
-.cartoon-input {
-  box-shadow: 3px 3px 0px #000;
-  transition: all 0.3s ease-in-out;
-}
-
-.cartoon-input:focus {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0px #000;
-}
-
 @keyframes wobble {
   0% {
     transform: rotate(0deg);
@@ -149,4 +139,61 @@ pre code {
   font-family: "Courier New", Courier, monospace;
   font-size: 0.875rem;
   line-height: 1.5;
+}
+
+.active-link {
+  position: relative;
+  color: #000;
+  font-weight: bold;
+  z-index: 1;
+  transform: rotate(-2deg);
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.active-link::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: -2px;
+  bottom: -2px;
+  background-color: #ff4136;
+  transform: skew(-5deg, 1deg);
+  z-index: -1;
+}
+
+.active-link::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: -2px;
+  bottom: -2px;
+  background-color: #dc3545;
+  opacity: 0.5;
+  transform: skew(5deg, -1deg);
+  z-index: -2;
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+.active-link:hover {
+  animation: wiggle 0.5s ease-in-out infinite;
+}
+
+.active-link:hover::before {
+  transform: skew(-8deg, 2deg) scale(1.05);
+}
+
+.active-link:hover::after {
+  transform: skew(8deg, -2deg) scale(1.05);
 }
