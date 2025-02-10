@@ -26,6 +26,7 @@ export function ContactForm() {
     const subject = "Mensagem de Contato";
     const body = message;
 
+    // send a message to linkedIn instead
     const mailtoLink = `mailto:seu-email@exemplo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     window.open(mailtoLink, "_blank");
