@@ -23,7 +23,7 @@ export default function Header() {
             <li>
               <Link
                 href="/"
-                className={`text-xl transition-colors ${isActive("/") ? "active-link" : ""}`}
+                className={`text-xl transition-colors ${isActive("/") ? "active-link" : "hover:text-red-600"}`}
               >
                 Home
               </Link>
@@ -31,7 +31,7 @@ export default function Header() {
             <li>
               <Link
                 href="/about"
-                className={`text-xl transition-colors ${isActive("/about") ? "active-link" : ""}`}
+                className={`text-xl transition-colors ${isActive("/about") ? "active-link" : "hover:text-red-600"}`}
               >
                 Sobre
               </Link>
@@ -39,7 +39,7 @@ export default function Header() {
             <li>
               <Link
                 href="/contact"
-                className={`text-xl transition-colors ${isActive("/contact") ? "active-link" : ""}`}
+                className={`text-xl transition-colors ${isActive("/contact") ? "active-link" : "hover:text-red-600"}`}
               >
                 Contato
               </Link>
@@ -47,7 +47,7 @@ export default function Header() {
             <li>
               <Link
                 href="/garden"
-                className={`text-xl transition-colors hover:text-green-600 ${isActive("/garden") ? "active-link" : ""}`}
+                className={`text-xl transition-colors hover:text-green-600 ${isActive("/garden") ? "active-link" : "hover:text-red-600"}`}
               >
                 Jardim
               </Link>
