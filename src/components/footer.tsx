@@ -12,21 +12,21 @@ export default function Footer() {
         </p>
         <div className="mt-4 flex justify-center space-x-4">
           <Link
-            href="#"
+            href="https://github.com/dmenezesgabriel"
             target="_blank"
             className="text-lg text-red-600 transition-colors hover:text-red-800"
           >
             Github
           </Link>
           <Link
-            href="#"
+            href="https://www.linkedin.com/in/dmenezesgabriel"
             target="_blank"
             className="text-lg text-red-600 transition-colors hover:text-red-800"
           >
             LinkedIn
           </Link>
           <Link
-            href="#"
+            href="https://x.com/dmenezesgabriel"
             target="_blank"
             className="text-lg text-red-600 transition-colors hover:text-red-800"
           >
