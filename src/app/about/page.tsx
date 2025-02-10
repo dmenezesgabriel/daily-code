@@ -12,7 +12,7 @@ export default function About() {
       <div className="cartoon-border subtle-card-texture rounded-lg bg-white p-8">
         <header>
           <h1 className="wobble mb-6 text-center text-4xl font-bold">
-            About Me
+            Sobre Mim
           </h1>
         </header>
 
@@ -22,20 +22,22 @@ export default function About() {
         >
           <Image
             src="https://github.com/dmenezesgabriel.png"
-            alt="Profile picture of Gabriel Menezes"
+            alt="Foto de perfil de Gabriel Menezes"
             width={200}
             height={200}
             className="cartoon-border mb-4 rounded-full md:mb-0 md:mr-8"
           />
           <div>
             <h2 id="profile-heading" className="mb-4 text-2xl font-bold">
-              Hi, I&apos;m Gabriel Menezes! 👋
+              Olá, eu sou Gabriel Menezes! 👋
             </h2>
             <p className="mb-4 text-lg">
-              Chief Chuckle Correspondent and Pun-dit Extraordinaire at The
-              Daily Scoop. I&apos;m here to serve you the hottest, most
-              hilarious tech news, garnished with a side of wit and a sprinkle
-              of geek!
+              Correspondente Chefe de Risadas e Mestre dos Trocadilhos no{" "}
+              <span className="font-bangers font-semibold tracking-wide">
+                O Código Diário
+              </span>
+              . Estou aqui para trazer as notícias tecnológicas mais quentes e
+              hilárias, com uma pitada de humor e uma dose geek!
             </p>
           </div>
         </section>
@@ -45,23 +47,23 @@ export default function About() {
           aria-labelledby="superpower-heading"
         >
           <h2 id="superpower-heading" className="mb-2 text-3xl font-bold">
-            My Superpower
+            Meu Superpoder
           </h2>
           <p>
-            I can debug code just by staring at it intensely. It works 60% of
-            the time, every time!
+            Eu consigo depurar código apenas encarando-o intensamente. Funciona
+            60% das vezes, toda vez!
           </p>
         </section>
 
         <section className="mb-8 p-4" aria-labelledby="mission-heading">
           <h2 id="mission-heading" className="mb-4 text-3xl font-bold">
-            My Mission
+            Minha Missão
           </h2>
           <p>
-            To make the world of web development a little bit funnier, one
-            article at a time. I believe that laughter is the best medicine
-            (except for actual medicine when you&apos;re sick), and that even
-            the most serious coder needs a good chuckle now and then.
+            Tornar o mundo do desenvolvimento web um pouco mais divertido, um
+            artigo de cada vez. Acredito que o riso é o melhor remédio (exceto
+            por remédios reais quando você está doente), e que até o programador
+            mais sério precisa de uma boa risada de vez em quando.
           </p>
         </section>
 
@@ -70,11 +72,11 @@ export default function About() {
           aria-labelledby="funfact-heading"
         >
           <h2 id="funfact-heading" className="mb-2 text-3xl font-bold">
-            Fun Fact!
+            Curiosidade!
           </h2>
           <p>
-            I once wrote a function so efficient, it finished before I started
-            writing it. Time travelers hate me!
+            Uma vez escrevi uma função tão eficiente, que ela terminou antes
+            mesmo de eu começar a escrevê-la. Viajantes do tempo me odeiam!
           </p>
         </section>
       </div>
