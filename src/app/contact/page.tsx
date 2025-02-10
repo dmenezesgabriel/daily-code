@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contato",
+  // description: "",
 };
 
 export default function Contact() {

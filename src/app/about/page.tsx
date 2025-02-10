@@ -3,6 +3,7 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Sobre",
+  // description: "",
 };
 
 export default function About() {

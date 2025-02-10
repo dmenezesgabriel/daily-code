@@ -3,6 +3,21 @@ import path from "path";
 
 import { getFileFrontMatter } from "@/utils/front-matter";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const slug = (await params).slug;
+
+  const frontMatter = getFileFrontMatter("posts", `${slug}.mdx`);
+
+  return {
+    title: `${frontMatter.title}`,
+    // description: "",
+  };
+}
+
 export default async function Page({
   params,
 }: {
