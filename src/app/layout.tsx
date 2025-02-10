@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         <div className="halftone-bg absolute inset-0" />
 
-        <div className="flex flex-grow flex-col">
+        <div className="relative flex flex-grow flex-col">
           <Header />
           <main className="flex-grow">{children}</main>
           <Footer />
