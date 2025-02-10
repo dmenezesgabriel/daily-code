@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
+
 import { NoteGrid } from "@/components/note-grid";
 import { getAllFrontMatters } from "@/utils/front-matter";
+
+export const metadata: Metadata = {
+  title: "Jardim",
+};
 
 export default function GardenPage() {
   const notes = getAllFrontMatters("notes");

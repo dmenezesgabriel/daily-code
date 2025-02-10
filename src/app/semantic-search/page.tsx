@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
+
 import { SemanticSearch } from "./semantic-search";
+
+export const metadata: Metadata = {
+  title: "Busca Semântica",
+};
 
 export default function TestPage() {
   return (

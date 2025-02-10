@@ -15,9 +15,10 @@ const bangers = Bangers({
 });
 
 export const metadata: Metadata = {
-  title: "Daily Code",
-  description:
-    "A blog with an organic retro-modern design and full-text search",
+  title: {
+    template: "%s | o código diário",
+    default: "o código diário",
+  },
 };
 
 export default function RootLayout({
@@ -26,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="pt">
       <body
         className={`${inter.variable} ${bangers.variable} flex min-h-screen flex-col font-sans`}
       >

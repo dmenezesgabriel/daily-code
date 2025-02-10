@@ -1,8 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import NoteCard from "@/components/note-card";
 import PostGrid from "@/components/post-grid";
 import { getAllFrontMatters } from "@/utils/front-matter";
+
+export const metadata: Metadata = {
+  title: "O código diário",
+};
 
 export default function Home() {
   const posts = getAllFrontMatters("posts");

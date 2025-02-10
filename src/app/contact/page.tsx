@@ -1,3 +1,9 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contato",
+};
+
 export default function Contact() {
   return (
     <div className="container relative mx-auto overflow-hidden px-4 py-12">
