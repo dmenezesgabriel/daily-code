@@ -13,22 +13,6 @@
   }
 }
 
-:root {
-  --foreground-rgb: 51, 51, 51;
-  --background-start-rgb: 253, 247, 237;
-  --background-end-rgb: 255, 253, 248;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--background-start-rgb)),
-    rgb(var(--background-end-rgb))
-  );
-  font-family: "Poppins", sans-serif;
-}
-
 .cartoon-border {
   border: 3px solid #000;
   box-shadow: 5px 5px 0px #000;
@@ -92,28 +76,6 @@ body {
     5px 5px;
   background-repeat: repeat;
   opacity: 0.1;
-}
-
-.halftone-overlay {
-  position: relative;
-}
-
-.halftone-overlay::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(#000 10%, transparent 11%),
-    radial-gradient(#000 10%, transparent 11%);
-  background-size: 10px 10px;
-  background-position:
-    0 0,
-    5px 5px;
-  background-repeat: repeat;
-  opacity: 0.03;
-  pointer-events: none;
 }
 
 .subtle-card-texture {

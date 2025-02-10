@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function Contact() {
   return (
-    <div className="container relative mx-auto overflow-hidden px-4 py-12">
-      <div className="cartoon-border subtle-card-texture relative z-10 rounded-lg bg-white p-8">
+    <div className="container mx-auto overflow-hidden px-4 py-12">
+      <div className="cartoon-border subtle-card-texture rounded-lg bg-white p-8">
         <header>
           <h1 className="wobble mb-6 text-center text-4xl font-bold">
             Contato

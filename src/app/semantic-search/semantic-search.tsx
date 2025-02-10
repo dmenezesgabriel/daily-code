@@ -119,7 +119,7 @@ export function SemanticSearch() {
   }, []);
 
   return (
-    <div className="relative z-10 flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center">
       <h1 className="mb-2 text-center text-5xl font-bold">Semantic Search</h1>
 
       <input

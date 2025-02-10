@@ -14,14 +14,14 @@ export default function Home() {
   const notes = getAllFrontMatters("notes");
 
   return (
-    <div className="container relative mx-auto overflow-hidden px-4 py-12">
-      <h1 className="wobble relative z-10 mb-12 text-center text-6xl font-bold text-gray-900">
+    <div className="container mx-auto overflow-hidden px-4 py-12">
+      <h1 className="wobble z-10 mb-12 text-center text-6xl font-bold text-gray-900">
         Últimos artigos!
       </h1>
 
       <PostGrid posts={posts} />
 
-      <div className="cartoon-border subtle-card-texture relative z-10 mt-16 rounded-lg bg-green-100 p-8">
+      <div className="cartoon-border subtle-card-texture z-10 mt-16 rounded-lg bg-green-100 p-8">
         <h2 className="wobble mb-8 text-center text-4xl font-bold text-green-800">
           Jardim Digital 🌱
         </h2>

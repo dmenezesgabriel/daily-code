@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function MdxLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="prose container mx-auto px-4 py-12">
+    <div className="container prose mx-auto px-4 py-12">
       <article className="cartoon-border subtle-card-texture relative z-10 rounded-lg bg-white p-8">
         {children}
         <Link
