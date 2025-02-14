@@ -26,9 +26,15 @@ function cosineSimilarity(a: number[], b: number[]): number {
   return dot / (Math.sqrt(normA) * Math.sqrt(normB));
 }
 
+type ResultType = {
+  slug: string;
+  score: number;
+  text: string;
+}[];
+
 export function SemanticSearch() {
-  const [result, setResult] = useState(null);
-  const [ready, setReady] = useState(null);
+  const [result, setResult] = useState<ResultType | null>(null);
+  const [ready, setReady] = useState<boolean | null>(null);
   const [status, setStatus] = useState("Loading...");
   const [progress, setProgress] = useState(0);
   const [embeddings, setEmbeddings] = useState<Record<
@@ -36,7 +42,7 @@ export function SemanticSearch() {
     { textChunks: string[]; chunkEmbeddings: number[][] }
   > | null>(null);
 
-  const worker = useRef(null);
+  const worker = useRef<Worker | null>(null);
 
   async function search(queryEmbedding: number[]) {
     if (!embeddings) return;
@@ -111,10 +117,10 @@ export function SemanticSearch() {
     worker.current.addEventListener("message", onMessageReceived);
 
     return () =>
-      worker.current.removeEventListener("message", onMessageReceived);
+      worker.current?.removeEventListener("message", onMessageReceived);
   });
 
-  const classify = useCallback((text) => {
+  const classify = useCallback((text: string) => {
     if (worker.current) {
       worker.current.postMessage({ text });
     }

@@ -5,9 +5,9 @@ env.allowLocalModels = false;
 class PipelineSingleton {
   static task = "feature-extraction";
   static model = "Xenova/multilingual-e5-small";
-  static instance = null;
+  static instance: Promise<any> | null = null;
 
-  static async getInstance(progress_callback = null) {
+  static async getInstance() {
     if (this.instance === null) {
       this.instance = pipeline(this.task, this.model, {
         progress_callback: (x) => {
@@ -21,9 +21,7 @@ class PipelineSingleton {
 }
 
 self.addEventListener("message", async (event) => {
-  const embedder = await PipelineSingleton.getInstance((x) => {
-    self.postMessage(x);
-  });
+  const embedder = await PipelineSingleton.getInstance();
 
   const output = await embedder(event.data.text, {
     pooling: "mean",

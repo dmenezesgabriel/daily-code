@@ -17,7 +17,7 @@ type CardIconProps = {
 };
 
 type CardFooterProps = {
-  date: string;
+  date?: string;
   id: string;
   variant?: CardVariant;
 };
