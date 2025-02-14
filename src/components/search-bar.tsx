@@ -47,7 +47,7 @@ export default function SearchBar({
           value={query}
           onChange={handleChange}
           className={cn(
-            "cartoon-border w-full rounded-full bg-white px-4 py-2 text-gray-900 focus:outline-none",
+            "cartoon-border w-full rounded-full bg-white px-4 py-2 text-gray-900 focus:outline-none [&::-webkit-search-cancel-button]:hidden",
             inputStyles,
           )}
           aria-describedby="search-description"
