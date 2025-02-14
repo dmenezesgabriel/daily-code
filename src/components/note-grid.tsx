@@ -3,6 +3,7 @@ import { SproutIcon as Seedling } from "lucide-react";
 
 import SearchBar from "@/components/search-bar";
 import { useContentFilter } from "@/hooks/useContentFilter";
+import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 
 import { Card } from "./card";
 
@@ -26,6 +27,8 @@ export function NoteGrid({ notes }: NoteGridProps) {
     categories,
     filteredItems: filteredNotes,
   } = useContentFilter({ items: notes });
+
+  const { visibleItems, loaderRef, hasMore } = useInfiniteScroll(filteredNotes);
 
   return (
     <>
@@ -51,22 +54,33 @@ export function NoteGrid({ notes }: NoteGridProps) {
 
       <div className="cartoon-border subtle-card-texture rounded-lg bg-green-100 p-8">
         {filteredNotes.length > 0 ? (
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {filteredNotes.map((note) => (
-              <div key={note.id}>
-                <Card.Root variant="garden">
-                  <Card.Icon category={note.category} variant="garden">
-                    <Seedling className="h-6 w-6 text-white" />
-                  </Card.Icon>
-                  <Card.Category variant="garden">
-                    {note.category}
-                  </Card.Category>
-                  <Card.Title>{note.title}</Card.Title>
-                  <Card.Footer variant="garden" date={note.date} id={note.id} />
-                </Card.Root>
+          <>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {visibleItems.map((note) => (
+                <div key={note.id}>
+                  <Card.Root variant="garden">
+                    <Card.Icon category={note.category} variant="garden">
+                      <Seedling className="h-6 w-6 text-white" />
+                    </Card.Icon>
+                    <Card.Category variant="garden">
+                      {note.category}
+                    </Card.Category>
+                    <Card.Title>{note.title}</Card.Title>
+                    <Card.Footer
+                      variant="garden"
+                      date={note.date}
+                      id={note.id}
+                    />
+                  </Card.Root>
+                </div>
+              ))}
+            </div>
+            {hasMore && (
+              <div ref={loaderRef} className="mt-8 flex justify-center">
+                <div className="h-8 w-8 animate-spin rounded-full border-4 border-green-600 border-t-transparent" />
               </div>
-            ))}
-          </div>
+            )}
+          </>
         ) : (
           <p className="text-center text-xl text-gray-600">
             Stop the presses! No news found. Try another scoop!
