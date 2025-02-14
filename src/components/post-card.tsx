@@ -6,16 +6,8 @@ type PostCardProps = {
 };
 
 export default function PostCard({ children }: PostCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
-    <div
-      className={`cartoon-border subtle-card-texture h-full overflow-hidden rounded-lg bg-white transition-all duration-300 ease-in-out ${
-        isHovered ? "-translate-y-2 scale-105 transform shadow-xl" : "shadow-md"
-      }`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <div className="cartoon-border subtle-card-texture h-full overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-105 hover:shadow-xl">
       <div className="flex h-full flex-col bg-white bg-opacity-90 p-6">
         {children}
       </div>
