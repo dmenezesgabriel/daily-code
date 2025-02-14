@@ -1,8 +1,9 @@
+import { SproutIcon as Seedling } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Button } from "@/components/button";
-import NoteCard from "@/components/note-card";
+import { Card } from "@/components/card";
 import PostGrid from "@/components/post-grid";
 import { getAllFrontMatters } from "@/utils/front-matter";
 
@@ -28,7 +29,14 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {notes.slice(0, 3).map((note) => (
-            <NoteCard key={note.id} note={note} />
+            <Card.Root key={note.id} variant="garden">
+              <Card.Icon category={note.category} variant="garden">
+                <Seedling className="h-6 w-6 text-white" />
+              </Card.Icon>
+              <Card.Category variant="garden">{note.category}</Card.Category>
+              <Card.Title>{note.title}</Card.Title>
+              <Card.Footer variant="garden" date={note.date} id={note.id} />
+            </Card.Root>
           ))}
         </div>
         <div className="mt-8 text-center">

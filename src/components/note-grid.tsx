@@ -1,8 +1,10 @@
 "use client";
+import { SproutIcon as Seedling } from "lucide-react";
+
 import SearchBar from "@/components/search-bar";
 import { useContentFilter } from "@/hooks/useContentFilter";
 
-import NoteCard from "./note-card";
+import { Card } from "./card";
 
 type Note = {
   id: string;
@@ -51,7 +53,18 @@ export function NoteGrid({ notes }: NoteGridProps) {
         {filteredNotes.length > 0 ? (
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filteredNotes.map((note) => (
-              <NoteCard key={note.id} note={note} />
+              <div key={note.id}>
+                <Card.Root variant="garden">
+                  <Card.Icon category={note.category} variant="garden">
+                    <Seedling className="h-6 w-6 text-white" />
+                  </Card.Icon>
+                  <Card.Category variant="garden">
+                    {note.category}
+                  </Card.Category>
+                  <Card.Title>{note.title}</Card.Title>
+                  <Card.Footer variant="garden" date={note.date} id={note.id} />
+                </Card.Root>
+              </div>
             ))}
           </div>
         ) : (

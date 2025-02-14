@@ -6,8 +6,8 @@ import { useSearchParams } from "next/navigation";
 import SearchBar from "@/components/search-bar";
 import { useContentFilter } from "@/hooks/useContentFilter";
 
+import { Card } from "./card";
 import Pagination from "./pagination";
-import * as PostCard from "./post-card";
 
 type Post = {
   id: string;
@@ -89,15 +89,15 @@ export default function PostGrid({ posts }: PostGridProps) {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {paginatedPosts.map((post) => (
               <div key={post.id} className="pop-up-hover">
-                <PostCard.Root>
-                  <PostCard.Icon category={post.category}>
+                <Card.Root variant="post">
+                  <Card.Icon category={post.category} variant="post">
                     {getCategoryIcon(post.category)}
-                  </PostCard.Icon>
-                  <PostCard.Category>{post.category}</PostCard.Category>
-                  <PostCard.Title>{post.title}</PostCard.Title>
-                  <PostCard.Excerpt>{post.excerpt}</PostCard.Excerpt>
-                  <PostCard.Footer date={post.date} postId={post.id} />
-                </PostCard.Root>
+                  </Card.Icon>
+                  <Card.Category variant="post">{post.category}</Card.Category>
+                  <Card.Title>{post.title}</Card.Title>
+                  <Card.Excerpt>{post.excerpt}</Card.Excerpt>
+                  <Card.Footer variant="post" date={post.date} id={post.id} />
+                </Card.Root>
               </div>
             ))}
           </div>
