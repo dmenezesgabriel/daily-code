@@ -1,6 +1,6 @@
 "use client";
 
-import { Code, Palette, Smartphone } from "lucide-react";
+import { Code, Palette, Smartphone, Tag } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 
@@ -29,13 +29,30 @@ type PostGridProps = {
 
 const POSTS_PER_PAGE = 3;
 
+function getCategoryIcon(category: string) {
+  switch (category.toLowerCase()) {
+    case "design":
+      return <Palette className="h-8 w-8 text-white" />;
+    case "development":
+      return <Code className="h-8 w-8 text-white" />;
+    case "ux":
+      return <Smartphone className="h-8 w-8 text-white" />;
+    default:
+      return <Tag className="h-8 w-8 text-white" />;
+  }
+}
+
 export default function PostGrid({ posts }: PostGridProps) {
   const [filter, setFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
   const searchParams = useSearchParams();
-
   const currentPage = Number(searchParams.get("page")) || 1;
+
+  const categories = useMemo(() => {
+    const uniqueCategories = [...new Set(posts.map((post) => post.category))];
+    return ["All", ...uniqueCategories];
+  }, [posts]);
 
   const filteredPosts = useMemo(() => {
     return posts.filter((post) => {
@@ -67,7 +84,7 @@ export default function PostGrid({ posts }: PostGridProps) {
         <SearchBar onSearch={setSearchQuery} />
 
         <div className="mb-8 flex flex-wrap justify-center gap-4">
-          {["All", "Design", "Development", "UX"].map((category) => (
+          {categories.map((category) => (
             <button
               key={category}
               onClick={() => setFilter(category)}
@@ -109,17 +126,4 @@ export default function PostGrid({ posts }: PostGridProps) {
       </div>
     </>
   );
-}
-
-function getCategoryIcon(category: string) {
-  switch (category.toLowerCase()) {
-    case "design":
-      return <Palette className="h-8 w-8 text-white" />;
-    case "development":
-      return <Code className="h-8 w-8 text-white" />;
-    case "ux":
-      return <Smartphone className="h-8 w-8 text-white" />;
-    default:
-      return null;
-  }
 }

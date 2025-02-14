@@ -21,6 +21,11 @@ export function NoteGrid({ notes }: NoteGridProps) {
   const [filter, setFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
+  const categories = useMemo(() => {
+    const uniqueCategories = [...new Set(notes.map((note) => note.category))];
+    return ["All", ...uniqueCategories];
+  }, [notes]);
+
   const filteredNotes = useMemo(() => {
     return notes.filter((note) => {
       const matchesFilter = filter === "All" || note.category === filter;
@@ -37,7 +42,7 @@ export function NoteGrid({ notes }: NoteGridProps) {
         <SearchBar onSearch={setSearchQuery} variant="garden" />
 
         <div className="mb-8 flex flex-wrap justify-center gap-4">
-          {["All", "Design", "Development", "UX"].map((category) => (
+          {categories.map((category) => (
             <button
               key={category}
               onClick={() => setFilter(category)}
