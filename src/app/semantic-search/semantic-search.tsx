@@ -82,7 +82,7 @@ export function SemanticSearch() {
       });
     }
 
-    const onMessageReceived = (e) => {
+    const onMessageReceived = (e: MessageEvent) => {
       switch (e.data.status) {
         case "initiate":
           setReady(false);
@@ -134,7 +134,7 @@ export function SemanticSearch() {
           type="text"
           placeholder="Digite sua busca"
           onInput={(e) => {
-            classify(e.target.value);
+            classify((e.target as HTMLInputElement).value);
           }}
         />
       </div>
