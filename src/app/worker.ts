@@ -1,15 +1,20 @@
-import { env, pipeline } from "@huggingface/transformers";
+import {
+  env,
+  type FeatureExtractionPipeline,
+  pipeline,
+  type PipelineType,
+} from "@huggingface/transformers";
 
 env.allowLocalModels = false;
 
 class PipelineSingleton {
   static task = "feature-extraction";
   static model = "Xenova/multilingual-e5-small";
-  static instance: Promise<any> | null = null;
+  static instance: Promise<FeatureExtractionPipeline> | null = null;
 
   static async getInstance() {
     if (this.instance === null) {
-      this.instance = pipeline(this.task, this.model, {
+      this.instance = pipeline(this.task as PipelineType, this.model, {
         progress_callback: (x) => {
           self.postMessage(x);
         },
