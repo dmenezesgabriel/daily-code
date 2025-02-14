@@ -1,7 +1,6 @@
 "use client";
-import { useMemo, useState } from "react";
-
 import SearchBar from "@/components/search-bar";
+import { useContentFilter } from "@/hooks/useContentFilter";
 
 import NoteCard from "./note-card";
 
@@ -18,23 +17,13 @@ type NoteGridProps = {
 };
 
 export function NoteGrid({ notes }: NoteGridProps) {
-  const [filter, setFilter] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const categories = useMemo(() => {
-    const uniqueCategories = [...new Set(notes.map((note) => note.category))];
-    return ["All", ...uniqueCategories];
-  }, [notes]);
-
-  const filteredNotes = useMemo(() => {
-    return notes.filter((note) => {
-      const matchesFilter = filter === "All" || note.category === filter;
-      const matchesSearch = note.title
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase());
-      return matchesFilter && matchesSearch;
-    });
-  }, [filter, notes, searchQuery]);
+  const {
+    filter,
+    setFilter,
+    setSearchQuery,
+    categories,
+    filteredItems: filteredNotes,
+  } = useContentFilter({ items: notes });
 
   return (
     <>

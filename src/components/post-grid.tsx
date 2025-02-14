@@ -2,9 +2,9 @@
 
 import { Code, Palette, Smartphone, Tag } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
 
 import SearchBar from "@/components/search-bar";
+import { useContentFilter } from "@/hooks/useContentFilter";
 
 import Pagination from "./pagination";
 import PostCard, {
@@ -43,26 +43,16 @@ function getCategoryIcon(category: string) {
 }
 
 export default function PostGrid({ posts }: PostGridProps) {
-  const [filter, setFilter] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
+  const {
+    filter,
+    setFilter,
+    setSearchQuery,
+    categories,
+    filteredItems: filteredPosts,
+  } = useContentFilter({ items: posts, searchInExcerpt: true });
 
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
-
-  const categories = useMemo(() => {
-    const uniqueCategories = [...new Set(posts.map((post) => post.category))];
-    return ["All", ...uniqueCategories];
-  }, [posts]);
-
-  const filteredPosts = useMemo(() => {
-    return posts.filter((post) => {
-      const matchesFilter = filter === "All" || post.category === filter;
-      const matchesSearch =
-        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.excerpt?.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesFilter && matchesSearch;
-    });
-  }, [filter, posts, searchQuery]);
 
   if (posts.length === 0) {
     return (
