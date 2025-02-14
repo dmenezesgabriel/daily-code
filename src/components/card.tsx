@@ -79,12 +79,12 @@ function Footer({ date, id, variant = "post" }: CardFooterProps) {
           href={href}
           className="cartoon-button transform rounded-lg bg-yellow-300 px-4 py-2 font-bold text-gray-900 transition-all duration-200 ease-in-out hover:scale-105 hover:bg-yellow-400 active:scale-95"
         >
-          Read More!
+          Leia mais!
         </Link>
       ) : (
         <Link href={href}>
           <Button variant="garden" size="sm">
-            Explore Note
+            Explore a nota!
           </Button>
         </Link>
       )}

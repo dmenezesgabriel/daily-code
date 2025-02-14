@@ -41,7 +41,7 @@ export default function Home() {
         </div>
         <div className="mt-8 text-center">
           <Link href="/garden">
-            <Button variant="garden">Explore o Jardim</Button>
+            <Button variant="garden">Visite o Jardim</Button>
           </Link>
         </div>
       </div>
