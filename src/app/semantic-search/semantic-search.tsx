@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Card } from "@/components/card";
+import { ProgressBar } from "@/components/progress-bar";
 
 function cosineSimilarity(a: number[], b: number[]): number {
   if (a.length !== b.length) {
@@ -142,12 +143,7 @@ export function SemanticSearch() {
       <p className="mt-2 text-xl font-bold text-gray-700">{status}</p>
 
       {progress > 0 && progress < 100 && (
-        <div className="cartoon-border mt-4 h-8 w-full max-w-md overflow-hidden rounded-full bg-gray-200">
-          <div
-            className="h-full bg-yellow-400 transition-all duration-300 ease-in-out"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
+        <ProgressBar progress={progress} variant="blog" />
       )}
 
       {ready !== null && result && (

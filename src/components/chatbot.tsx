@@ -5,6 +5,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
+import { ProgressBar } from "./progress-bar";
+
 interface ChatbotProps {
   className?: string;
 }
@@ -121,12 +123,7 @@ export function Chatbot({ className }: ChatbotProps) {
             <p className="mt-2 text-xl font-bold text-gray-700">{status}</p>
 
             {progress > 0 && progress < 100 && (
-              <div className="cartoon-border mt-4 h-8 w-full max-w-md overflow-hidden rounded-full bg-gray-200">
-                <div
-                  className="h-full bg-yellow-400 transition-all duration-300 ease-in-out"
-                  style={{ width: `${progress}%` }}
-                ></div>
-              </div>
+              <ProgressBar progress={progress} variant="robot" />
             )}
           </div>
 
