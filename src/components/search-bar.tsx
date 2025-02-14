@@ -31,10 +31,18 @@ export default function SearchBar({
       : "focus:ring-2 focus:ring-red-500 border-red-500";
 
   return (
-    <div className="mx-auto mb-8 w-full max-w-md">
+    <div
+      role="search"
+      aria-label="Busca de conteúdo"
+      className="mx-auto mb-8 w-full max-w-md"
+    >
       <div className="relative">
+        <label htmlFor="search-input" className="sr-only">
+          Buscar conteúdo
+        </label>
         <input
-          type="text"
+          id="search-input"
+          type="search"
           placeholder="Quero saber mais sobre..."
           value={query}
           onChange={handleChange}
@@ -42,6 +50,7 @@ export default function SearchBar({
             "cartoon-border w-full rounded-full bg-white px-4 py-2 text-gray-900 focus:outline-none",
             inputStyles,
           )}
+          aria-describedby="search-description"
         />
         <Search
           size={24}
@@ -49,7 +58,11 @@ export default function SearchBar({
             "absolute right-2 top-1/2 -translate-y-1/2 transform",
             buttonStyles,
           )}
+          aria-hidden="true"
         />
+        <span id="search-description" className="sr-only">
+          Digite para filtrar o conteúdo automaticamente
+        </span>
       </div>
     </div>
   );
