@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { Button } from "@/components/button";
+
 export function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
@@ -88,13 +90,14 @@ export function ContactForm() {
         ></textarea>
       </div>
       <div className="text-center">
-        <button
+        <Button
           type="submit"
-          className="cartoon-button transform rounded-lg bg-yellow-300 px-4 py-2 font-bold text-gray-900 transition-all duration-200 ease-in-out hover:scale-105 hover:bg-yellow-400 active:scale-95"
+          size="sm"
+          variant="blog"
           aria-label="Enviar mensagem"
         >
           Enviar
-        </button>
+        </Button>
       </div>
     </form>
   );

@@ -1,6 +1,8 @@
 import { SproutIcon as Seedling } from "lucide-react";
 import Link from "next/link";
 
+import { Button } from "./button";
+
 type Note = {
   id: string;
   title: string;
@@ -28,11 +30,10 @@ export default function NoteCard({ note }: NoteCardProps) {
 
         <div className="mt-auto flex items-center justify-between">
           <span className="text-sm text-gray-500">{note.date}</span>
-          <Link
-            href={`/garden/${note.id}`}
-            className="cartoon-button transform rounded-lg bg-green-300 px-4 py-2 font-bold text-gray-900 transition-all duration-200 ease-in-out hover:scale-105 hover:bg-green-400 active:scale-95"
-          >
-            Explore Note
+          <Link href={`/garden/${note.id}`}>
+            <Button variant="garden" size="sm">
+              Explore Note
+            </Button>
           </Link>
         </div>
       </div>

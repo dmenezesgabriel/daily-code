@@ -36,8 +36,8 @@ export default function About() {
               <span className="font-bangers font-semibold tracking-wide">
                 O Código Diário
               </span>
-              . Estou aqui para trazer as notícias tecnológicas mais quentes e
-              hilárias, com uma pitada de humor e uma dose geek!
+              . Estou aqui para trazer os temas tecnológicos mais quentes e
+              hilários, com uma pitada de humor e uma dose geek!
             </p>
           </div>
         </section>

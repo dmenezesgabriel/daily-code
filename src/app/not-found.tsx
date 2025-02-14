@@ -2,6 +2,8 @@ import { Newspaper } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { Button } from "@/components/button";
+
 export const metadata: Metadata = {
   title: "404",
 };
@@ -39,11 +41,8 @@ export default function NotFound() {
             na redação!
           </p>
           <nav>
-            <Link
-              href="/"
-              className="cartoon-button inline-block transform rounded-lg bg-yellow-400 px-6 py-3 font-bold text-gray-900 transition-all duration-200 ease-in-out hover:scale-105 hover:bg-yellow-500 active:scale-95"
-            >
-              Voltar para a Página Inicial
+            <Link href="/">
+              <Button variant="blog">Voltar para a Página Inicial</Button>
             </Link>
           </nav>
         </article>

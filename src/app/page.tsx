@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { Button } from "@/components/button";
 import NoteCard from "@/components/note-card";
 import PostGrid from "@/components/post-grid";
 import { getAllFrontMatters } from "@/utils/front-matter";
@@ -31,27 +32,18 @@ export default function Home() {
           ))}
         </div>
         <div className="mt-8 text-center">
-          <Link
-            href="/garden"
-            className="cartoon-button inline-block transform rounded-lg bg-green-500 px-6 py-3 font-bold text-white transition-all duration-200 ease-in-out hover:scale-105 hover:bg-green-600 active:scale-95"
-          >
-            Explore o Jardim
+          <Link href="/garden">
+            <Button variant="garden">Explore o Jardim</Button>
           </Link>
         </div>
       </div>
 
-      <div className="mt-12 text-center">
-        <Link
-          href="/about"
-          className="cartoon-button mr-4 inline-block transform rounded-lg bg-yellow-300 px-6 py-3 font-bold text-gray-900 transition-all duration-200 ease-in-out hover:scale-105 hover:bg-yellow-400 active:scale-95"
-        >
-          Sobre o author
+      <div className="mt-12 flex flex-row items-center justify-center gap-4 text-center">
+        <Link href="/about">
+          <Button variant="blog">Sobre o author</Button>
         </Link>
-        <Link
-          href="/contact"
-          className="cartoon-button inline-block transform rounded-lg bg-yellow-300 px-6 py-3 font-bold text-gray-900 transition-all duration-200 ease-in-out hover:scale-105 hover:bg-yellow-400 active:scale-95"
-        >
-          Entre em contato
+        <Link href="/contact">
+          <Button variant="blog">Entre em contato</Button>
         </Link>
       </div>
     </main>

@@ -25,7 +25,7 @@ export default function Header() {
                 href="/"
                 className={`text-xl transition-colors ${isActive("/") ? "active-link" : "hover:text-red-600"}`}
               >
-                Home
+                Início
               </Link>
             </li>
             <li>
