@@ -28,7 +28,7 @@ class FeatureExtractionPipelineSingleton {
 
 class TextGenerationPipelineSingleton {
   static task = "text-generation";
-  static model = "onnx-community/Qwen2.5-0.5B-Instruct-ONNX-MHA";
+  static model = "HuggingFaceTB/SmolLM2-135M-Instruct";
   static instance: Promise<TextGenerationPipeline> | null = null;
 
   static async getInstance() {
@@ -37,7 +37,7 @@ class TextGenerationPipelineSingleton {
         progress_callback: (x) => {
           self.postMessage(x);
         },
-        dtype: "fp32",
+        dtype: "fp16",
       }) as Promise<TextGenerationPipeline>;
     }
     return this.instance;
