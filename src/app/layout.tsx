@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Bangers, Inter } from "next/font/google";
 import type React from "react";
 
+import { Chatbot } from "@/components/chatbot";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 
@@ -38,6 +39,7 @@ export default function RootLayout({
           <div className="relative flex-grow">{children}</div>
           <Footer />
         </div>
+        <Chatbot />
       </body>
     </html>
   );
