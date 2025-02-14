@@ -1,7 +1,8 @@
 "use client";
 
-import { Search } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+
+import { Card } from "@/components/card";
 
 function cosineSimilarity(a: number[], b: number[]): number {
   if (a.length !== b.length) {
@@ -144,25 +145,23 @@ export function SemanticSearch() {
       )}
 
       {ready !== null && result && (
-        <div className="mt-8 w-full max-w-md">
+        <div className="mt-8 w-full max-w-md space-y-4">
           {result.map(({ slug, score, text }) => (
-            <div
-              key={slug}
-              className="cartoon-border pop-up-hover mb-6 rounded-lg bg-white p-4"
-            >
-              <h2 className="mb-2 text-xl font-bold">
+            <Card.Root key={slug}>
+              <Card.Category>Blog Post</Card.Category>
+              <Card.Title>
                 <a
                   href={`/blog/${slug}`}
                   className="text-blue-600 transition-colors duration-200 hover:text-blue-800"
                 >
-                  {slug} ({score.toFixed(2)})
+                  {slug}
                 </a>
-              </h2>
-              <p className="mb-2 text-gray-600">
-                Score: {(score * 100).toFixed(0)}%
-              </p>
-              <p className="italic text-gray-800">&quot;{text}&quot;</p>
-            </div>
+              </Card.Title>
+              <Card.Excerpt>
+                Score: {(score * 100).toFixed(0)}% - &quot;{text}&quot;
+              </Card.Excerpt>
+              <Card.Footer id={slug} />
+            </Card.Root>
           ))}
         </div>
       )}
