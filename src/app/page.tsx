@@ -14,7 +14,7 @@ export default function Home() {
   const notes = getAllFrontMatters("notes");
 
   return (
-    <div className="container mx-auto overflow-hidden px-4 py-12">
+    <main className="container mx-auto overflow-hidden px-4 py-12">
       <h1 className="wobble z-10 mb-12 text-center text-6xl font-bold text-gray-900">
         Últimos artigos!
       </h1>
@@ -54,6 +54,6 @@ export default function Home() {
           Entre em contato
         </Link>
       </div>
-    </div>
+    </main>
   );
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { ContactForm } from "./from";
+import { ContactForm } from "./form";
 
 export const metadata: Metadata = {
   title: "Contato",
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Contact() {
   return (
-    <div className="container mx-auto overflow-hidden px-4 py-12">
+    <main className="container mx-auto overflow-hidden px-4 py-12">
       <div className="cartoon-border subtle-card-texture rounded-lg bg-white p-8">
         <header>
           <h1 className="wobble mb-6 text-center text-4xl font-bold">
@@ -44,6 +44,6 @@ export default function Contact() {
           </p>
         </section>
       </div>
-    </div>
+    </main>
   );
 }

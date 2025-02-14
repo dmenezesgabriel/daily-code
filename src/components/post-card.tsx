@@ -10,13 +10,13 @@ export default function PostCard({ children }: PostCardProps) {
 
   return (
     <div
-      className={`cartoon-border subtle-card-texture relative h-full overflow-hidden rounded-lg bg-white transition-all duration-300 ease-in-out ${
+      className={`cartoon-border subtle-card-texture h-full overflow-hidden rounded-lg bg-white transition-all duration-300 ease-in-out ${
         isHovered ? "-translate-y-2 scale-105 transform shadow-xl" : "shadow-md"
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative z-10 flex h-full flex-col bg-white bg-opacity-90 p-6">
+      <div className="flex h-full flex-col bg-white bg-opacity-90 p-6">
         {children}
       </div>
     </div>

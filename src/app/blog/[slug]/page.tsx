@@ -31,13 +31,11 @@ export default async function Page({
 
   return (
     <>
-      <h1 className="relative z-10 mb-4 text-4xl font-bold">
-        {frontMatter.title}
-      </h1>
-      <p className="relative z-10 mb-4 text-gray-600">
+      <h1 className="mb-4 text-4xl font-bold">{frontMatter.title}</h1>
+      <p className="mb-4 text-gray-600">
         {frontMatter.date} - {frontMatter.category}
       </p>
-      <div className="prose relative z-10 mb-8 max-w-none">
+      <div className="prose mb-8 max-w-none">
         <PostContent />
       </div>
     </>

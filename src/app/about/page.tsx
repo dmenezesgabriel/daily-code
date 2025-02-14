@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <article className="container mx-auto overflow-hidden px-4 py-12">
-      <div className="cartoon-border subtle-card-texture rounded-lg bg-white p-8">
+    <main className="container mx-auto overflow-hidden px-4 py-12">
+      <article className="cartoon-border subtle-card-texture rounded-lg bg-white p-8">
         <header>
           <h1 className="wobble mb-6 text-center text-4xl font-bold">
             Sobre Mim
@@ -79,7 +79,7 @@ export default function About() {
             mesmo de eu começar a escrevê-la. Viajantes do tempo me odeiam!
           </p>
         </section>
-      </div>
-    </article>
+      </article>
+    </main>
   );
 }

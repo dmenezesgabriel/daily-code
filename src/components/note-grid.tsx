@@ -33,7 +33,7 @@ export function NoteGrid({ notes }: NoteGridProps) {
 
   return (
     <>
-      <div className="relative z-10 mx-auto max-w-4xl">
+      <div className="mx-auto max-w-4xl">
         <SearchBar onSearch={setSearchQuery} variant="garden" />
 
         <div className="mb-8 flex flex-wrap justify-center gap-4">
@@ -53,7 +53,7 @@ export function NoteGrid({ notes }: NoteGridProps) {
         </div>
       </div>
 
-      <div className="cartoon-border subtle-card-texture relative z-10 rounded-lg bg-green-100 p-8">
+      <div className="cartoon-border subtle-card-texture rounded-lg bg-green-100 p-8">
         {filteredNotes.length > 0 ? (
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filteredNotes.map((note) => (
