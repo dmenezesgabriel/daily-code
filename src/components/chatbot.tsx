@@ -59,10 +59,15 @@ export function Chatbot({ className }: ChatbotProps) {
           setStatus("Model Ready! Ask me anything.");
           break;
         case "complete":
-          setMessages((prev) => [
-            ...prev,
-            { text: "Aqui está a resposta...", sender: "bot" },
-          ]);
+          if (e.data.task === "text-generation") {
+            setMessages((prev) =>
+              prev.map((message) =>
+                message.text === "Loading..."
+                  ? { text: e.data.output, sender: "bot" }
+                  : message,
+              ),
+            );
+          }
           break;
         case "error":
           setStatus(`Error: ${e.data.message}`);
@@ -77,13 +82,24 @@ export function Chatbot({ className }: ChatbotProps) {
       worker.current?.removeEventListener("message", onMessageReceived);
   }, []);
 
-  const sendMessage = useCallback((text: string) => {
-    if (worker.current) {
-      setMessages((prev) => [...prev, { text: text, sender: "user" }]);
-      worker.current.postMessage({ text });
-      setInput("");
-    }
-  }, []);
+  const sendMessage = useCallback(
+    (text: string) => {
+      if (worker.current) {
+        const newMessages = [...messages, { text: text, sender: "user" }];
+        setMessages(newMessages);
+        setMessages((prev) => [...prev, { text: "Loading...", sender: "bot" }]);
+
+        console.log("Sending message to worker:", text);
+
+        worker.current.postMessage({
+          text,
+          task: "text-generation",
+        });
+        setInput("");
+      }
+    },
+    [messages],
+  );
 
   return (
     <div

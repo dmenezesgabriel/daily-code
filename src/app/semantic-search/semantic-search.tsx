@@ -106,7 +106,9 @@ export function SemanticSearch() {
           setStatus("Model Ready! Type to Search.");
           break;
         case "complete":
-          search(e.data.output);
+          if (e.data.task === "feature-extraction") {
+            search(e.data.output);
+          }
           break;
         case "error":
           setStatus(`Error: ${e.data.message}`);
@@ -123,7 +125,7 @@ export function SemanticSearch() {
 
   const classify = useCallback((text: string) => {
     if (worker.current) {
-      worker.current.postMessage({ text });
+      worker.current.postMessage({ text, task: "feature-extraction" });
     }
   }, []);
 
