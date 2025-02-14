@@ -1,6 +1,4 @@
-"use client";
-
-import { JSX, useEffect, useState } from "react";
+import { JSX } from "react";
 
 import { getLanguageFromClass, highlight } from "./shared";
 
@@ -10,15 +8,7 @@ interface CodeProps {
 }
 
 export function Code({ children, className }: CodeProps): JSX.Element {
-  const [nodes, setNodes] = useState<JSX.Element | null>(null);
+  if (!children) return <pre className={className}>{children}</pre>;
 
-  useEffect(() => {
-    if (!children) return;
-
-    void highlight(children.trim(), getLanguageFromClass(className)).then(
-      setNodes,
-    );
-  }, [children, className]);
-
-  return nodes ?? <pre className={className}>{children}</pre>;
+  return highlight(children.trim(), getLanguageFromClass(className));
 }

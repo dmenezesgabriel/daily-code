@@ -8,7 +8,6 @@ interface PreProps extends React.HTMLAttributes<HTMLPreElement> {
 
 export function Pre({ children, ...props }: PreProps): JSX.Element {
   const className = children?.props?.className;
-
   return className ? (
     <Code className={className}>{children.props.children}</Code>
   ) : (
