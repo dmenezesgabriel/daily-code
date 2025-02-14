@@ -63,7 +63,7 @@ export default function PostGrid({ posts }: PostGridProps) {
 
   return (
     <>
-      <div className="mx-auto max-w-4xl">
+      <div className="relative z-10 mx-auto max-w-4xl">
         <SearchBar onSearch={setSearchQuery} />
 
         <div className="mb-8 flex flex-wrap justify-center gap-4">
@@ -83,7 +83,7 @@ export default function PostGrid({ posts }: PostGridProps) {
         </div>
       </div>
 
-      <div className="cartoon-border subtle-card-texturerounded-lg bg-white p-8">
+      <div className="cartoon-border subtle-card-texture relative z-10 rounded-lg bg-white p-8">
         {paginatedPosts.length > 0 ? (
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {paginatedPosts.map((post) => (
