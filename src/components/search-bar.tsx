@@ -14,9 +14,10 @@ export default function SearchBar({
 }: SearchBarProps) {
   const [query, setQuery] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSearch(query);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newQuery = e.target.value;
+    setQuery(newQuery);
+    onSearch(newQuery);
   };
 
   const buttonStyles =
@@ -30,28 +31,26 @@ export default function SearchBar({
       : "focus:ring-2 focus:ring-red-500 border-red-500";
 
   return (
-    <form onSubmit={handleSubmit} className="mx-auto mb-8 w-full max-w-md">
+    <div className="mx-auto mb-8 w-full max-w-md">
       <div className="relative">
         <input
           type="text"
           placeholder="Quero saber mais sobre..."
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={handleChange}
           className={cn(
             "cartoon-border w-full rounded-full bg-white px-4 py-2 text-gray-900 focus:outline-none",
             inputStyles,
           )}
         />
-        <button
-          type="submit"
+        <Search
+          size={24}
           className={cn(
             "absolute right-2 top-1/2 -translate-y-1/2 transform",
             buttonStyles,
           )}
-        >
-          <Search size={24} />
-        </button>
+        />
       </div>
-    </form>
+    </div>
   );
 }
