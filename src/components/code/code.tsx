@@ -7,7 +7,10 @@ interface CodeProps {
   className?: string;
 }
 
-export function Code({ children, className }: CodeProps): JSX.Element {
+export async function Code({
+  children,
+  className,
+}: CodeProps): Promise<JSX.Element> {
   if (!children) return <pre className={className}>{children}</pre>;
 
   return highlight(children.trim(), getLanguageFromClass(className));
