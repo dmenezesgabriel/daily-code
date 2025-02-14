@@ -1,6 +1,6 @@
 "use client";
 
-import { Send } from "lucide-react";
+import { Bot, Send, User } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
@@ -104,12 +104,18 @@ export function Chatbot({ className }: ChatbotProps) {
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={cn("mb-2 rounded-lg p-2", {
-                  "bg-gray-100 text-right": message.sender === "user",
+                className={cn("mb-2 flex items-start rounded-lg p-2", {
+                  "flex-row-reverse bg-gray-100 text-right":
+                    message.sender === "user",
                   "bg-blue-100 text-left": message.sender === "bot",
                 })}
               >
-                {message.text}
+                {message.sender === "user" ? (
+                  <User className="mr-2 h-6 w-6" />
+                ) : (
+                  <Bot className="mr-2 h-6 w-6" />
+                )}
+                <div>{message.text}</div>
               </div>
             ))}
             <p className="mt-2 text-xl font-bold text-gray-700">{status}</p>
