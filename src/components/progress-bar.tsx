@@ -34,7 +34,7 @@ export function ProgressBar({
         )}
         style={{ width: `${progress}%` }}
       ></div>
-      <span className="absolute inset-0 flex items-center justify-center font-bold text-black">
+      <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-black">
         {status}
       </span>
     </div>
