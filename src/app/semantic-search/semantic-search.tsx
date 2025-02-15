@@ -108,11 +108,20 @@ export function SemanticSearch() {
         case "complete":
           if (e.data.task === "feature-extraction") {
             search(e.data.output);
+            setStatus("Search complete!"); // Update status here
           }
           break;
         case "error":
           setStatus(`Error: ${e.data.message}`);
           console.error(e.data.message);
+          break;
+        default:
+          if (e.data.progress !== undefined) {
+            setProgress(e.data.progress);
+            setStatus(
+              `Downloading ${e.data.file}: ${e.data.progress.toFixed(2)}%`,
+            );
+          }
           break;
       }
     };
@@ -142,10 +151,8 @@ export function SemanticSearch() {
         />
       </div>
 
-      <p className="mt-2 text-xl font-bold text-gray-700">{status}</p>
-
       {progress > 0 && progress < 100 && (
-        <ProgressBar progress={progress} variant="blog" />
+        <ProgressBar progress={progress} status={status} variant="blog" />
       )}
 
       {ready !== null && result && (

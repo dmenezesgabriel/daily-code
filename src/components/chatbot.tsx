@@ -73,6 +73,14 @@ export function Chatbot({ className }: ChatbotProps) {
           setStatus(`Error: ${e.data.message}`);
           console.error(e.data.message);
           break;
+        default:
+          if (e.data.progress !== undefined) {
+            setProgress(e.data.progress);
+            setStatus(
+              `Downloading ${e.data.file}: ${e.data.progress.toFixed(2)}%`,
+            );
+          }
+          break;
       }
     };
 
@@ -136,10 +144,13 @@ export function Chatbot({ className }: ChatbotProps) {
                 <div>{message.text}</div>
               </div>
             ))}
-            <p className="mt-2 text-xl font-bold text-gray-700">{status}</p>
 
             {progress > 0 && progress < 100 && (
-              <ProgressBar progress={progress} variant="robot" />
+              <ProgressBar
+                progress={progress}
+                status={status}
+                variant="robot"
+              />
             )}
           </div>
 
