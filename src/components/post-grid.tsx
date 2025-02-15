@@ -4,7 +4,7 @@ import { Code, Palette, Smartphone, Tag } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
 import SearchBar from "@/components/search-bar";
-import { useContentFilter } from "@/hooks/useContentFilter";
+import { useContentFilter } from "@/hooks/use-content-filter";
 
 import { Card } from "./card";
 import Pagination from "./pagination";

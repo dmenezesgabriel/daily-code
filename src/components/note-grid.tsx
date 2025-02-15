@@ -2,8 +2,8 @@
 import { SproutIcon as Seedling } from "lucide-react";
 
 import SearchBar from "@/components/search-bar";
-import { useContentFilter } from "@/hooks/useContentFilter";
-import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
+import { useContentFilter } from "@/hooks/use-content-filter";
+import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
 
 import { Card } from "./card";
 
