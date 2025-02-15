@@ -17,8 +17,8 @@ const bangers = Bangers({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | o código diário",
-    default: "o código diário",
+    template: "%s | gm.dev",
+    default: "gm.dev",
   },
 };
 

@@ -33,11 +33,9 @@ export default function About() {
             </h2>
             <p className="mb-4 text-lg">
               Correspondente Chefe de Risadas e Mestre dos Trocadilhos no{" "}
-              <span className="font-bangers font-semibold tracking-wide">
-                O Código Diário
-              </span>
-              . Estou aqui para trazer os temas tecnológicos mais quentes e
-              hilários, com uma pitada de humor e uma dose geek!
+              <span className="font-semibold">gm.dev</span>. Estou aqui para
+              trazer os temas tecnológicos mais quentes e hilários, com uma
+              pitada de humor e uma dose geek!
             </p>
           </div>
         </section>

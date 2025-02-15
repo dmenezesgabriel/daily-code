@@ -18,9 +18,13 @@ export default function Header() {
         <Link
           href="/"
           className="wobble mb-4 text-4xl font-bold transition-colors hover:text-red-600 md:mb-0"
-          aria-label="O Código Diário Home"
+          aria-label="gm.dev Home"
         >
-          O Código Diário
+          <div className="flex flex-row">
+            <span>gm</span>
+            <span className="text-green-400">|</span>
+            <span>dev</span>
+          </div>
         </Link>
         <nav role="navigation" aria-label="Main Navigation">
           <ul className="flex space-x-6">
