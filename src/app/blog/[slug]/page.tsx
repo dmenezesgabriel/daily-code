@@ -1,4 +1,5 @@
 import fs from "fs";
+import { BookOpen, Calendar, Tag } from "lucide-react";
 import path from "path";
 
 import { getFileFrontMatter } from "@/utils/front-matter";
@@ -14,7 +15,7 @@ export async function generateMetadata({
 
   return {
     title: `${frontMatter.title}`,
-    // description: "",
+    description: frontMatter.excerpt,
   };
 }
 
@@ -32,10 +33,21 @@ export default async function Page({
   return (
     <>
       <h1 className="mb-4 text-4xl font-bold">{frontMatter.title}</h1>
-      <p className="mb-4 text-gray-600">
-        {frontMatter.date} - {frontMatter.category}
-      </p>
-      <div className="prose mb-8 max-w-none">
+      <div className="flex flex-row gap-4 text-xl font-bold underline decoration-yellow-400 decoration-wavy">
+        <span className="flex flex-row gap-1">
+          <Calendar />
+          {frontMatter.date}
+        </span>
+        <span className="flex flex-row gap-1">
+          <Tag />
+          {frontMatter.category}
+        </span>
+        <span className="flex flex-row gap-1">
+          <BookOpen />
+          {frontMatter.readTime}
+        </span>
+      </div>
+      <div className="prose mb-8 mt-8 max-w-none">
         <PostContent />
       </div>
     </>

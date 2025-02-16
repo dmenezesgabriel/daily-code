@@ -10,6 +10,15 @@ export interface Content {
   excerpt?: string;
   date: string;
   category: string;
+  readTime: string;
+}
+
+function calculateReadingTime(content: string) {
+  const wordsPerMinute = 200;
+  const words = content.split(/\s+/).length;
+  const minutes = words / wordsPerMinute;
+  const readTime = Math.ceil(minutes);
+  return `${readTime} min`;
 }
 
 export function getFileFrontMatter(folder: string, filename: string) {
@@ -18,7 +27,8 @@ export function getFileFrontMatter(folder: string, filename: string) {
     "utf-8",
   );
 
-  const { data: frontMatter } = matter(markdownWithMeta);
+  const { data: frontMatter, content } = matter(markdownWithMeta);
+  const readTime = calculateReadingTime(content);
 
   return {
     id: filename.replace(".mdx", ""),
@@ -26,6 +36,7 @@ export function getFileFrontMatter(folder: string, filename: string) {
     title: frontMatter.title,
     date: frontMatter.date,
     category: frontMatter.category,
+    readTime: readTime,
   };
 }
 
