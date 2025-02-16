@@ -1,5 +1,5 @@
 import fs from "fs";
-import { BookOpen, Calendar, Tag } from "lucide-react";
+import { Calendar, Hourglass, Tag } from "lucide-react";
 import path from "path";
 
 import { getFileFrontMatter } from "@/utils/front-matter";
@@ -43,7 +43,7 @@ export default async function Page({
           {frontMatter.category}
         </span>
         <span className="flex flex-row gap-1">
-          <BookOpen />
+          <Hourglass />
           {frontMatter.readTime}
         </span>
       </div>
