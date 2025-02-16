@@ -19,6 +19,17 @@ export async function generateMetadata({
   };
 }
 
+export function generateStaticParams() {
+  const files = fs.readdirSync(
+    path.join(process.cwd(), "src/content/posts"),
+    "utf-8",
+  );
+
+  return files.map((filename) => {
+    return { slug: filename.replace(".mdx", "") };
+  });
+}
+
 export default async function Page({
   params,
 }: {
@@ -52,17 +63,6 @@ export default async function Page({
       </div>
     </>
   );
-}
-
-export function generateStaticParams() {
-  const files = fs.readdirSync(
-    path.join(process.cwd(), "src/content/posts"),
-    "utf-8",
-  );
-
-  return files.map((filename) => {
-    return { slug: filename.replace(".mdx", "") };
-  });
 }
 
 export const dynamicParams = false;
