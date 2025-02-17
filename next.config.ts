@@ -26,6 +26,7 @@ const nextConfig: NextConfig = {
     return config;
   },
   output: "export",
+  basePath: "/daily-code",
 };
 
 const withMDX = createMDX({
