@@ -4,6 +4,13 @@ import remarkFrontmatter from "remark-frontmatter";
 
 import { remarkRemoveFrontmatter } from "@/utils/front-matter";
 
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [remarkRemoveFrontmatter, remarkFrontmatter],
+  },
+});
+
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   images: {
@@ -28,11 +35,5 @@ const nextConfig: NextConfig = {
   output: "export",
   basePath: "/daily-code",
 };
-
-const withMDX = createMDX({
-  options: {
-    remarkPlugins: [remarkRemoveFrontmatter, remarkFrontmatter],
-  },
-});
 
 export default withMDX(nextConfig);
