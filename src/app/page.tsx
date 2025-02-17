@@ -1,6 +1,7 @@
 import { SproutIcon as Seedling } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 
 import { Button } from "@/components/button";
 import { Card } from "@/components/card";
@@ -20,8 +21,9 @@ export default function Home() {
       <h1 className="wobble z-10 mb-12 text-center text-6xl font-bold text-gray-900">
         Últimos artigos!
       </h1>
-
-      <PostGrid posts={posts} />
+      <Suspense>
+        <PostGrid posts={posts} />
+      </Suspense>
 
       <div className="cartoon-border subtle-card-texture z-10 mt-16 rounded-lg bg-green-100 p-8">
         <h2 className="wobble mb-8 text-center text-4xl font-bold text-green-800">

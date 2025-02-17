@@ -21,7 +21,6 @@ export function Chatbot({ className }: ChatbotProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [status, setStatus] = useState("Loading...");
-  const [ready, setReady] = useState<boolean | null>(null);
   const [progress, setProgress] = useState(0);
 
   const worker = useRef<Worker | null>(null);
@@ -39,7 +38,6 @@ export function Chatbot({ className }: ChatbotProps) {
     const onMessageReceived = (e: MessageEvent) => {
       switch (e.data.status) {
         case "initiate":
-          setReady(false);
           setStatus("Initializing model...");
           break;
         case "download":
@@ -55,7 +53,6 @@ export function Chatbot({ className }: ChatbotProps) {
           setStatus(`Loaded: ${e.data.file}`);
           break;
         case "ready":
-          setReady(true);
           setStatus("Model Ready! Ask me anything.");
           break;
         case "complete":
@@ -93,7 +90,10 @@ export function Chatbot({ className }: ChatbotProps) {
   const sendMessage = useCallback(
     (text: string) => {
       if (worker.current) {
-        const newMessages = [...messages, { text: text, sender: "user" }];
+        const newMessages: Message[] = [
+          ...messages,
+          { text: text, sender: "user" },
+        ];
         setMessages(newMessages);
         setMessages((prev) => [...prev, { text: "Loading...", sender: "bot" }]);
 

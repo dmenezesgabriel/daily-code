@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 import { NoteGrid } from "@/components/note-grid";
 import { getAllFrontMatters } from "@/utils/front-matter";
@@ -15,7 +16,9 @@ export default function GardenPage() {
       <h1 className="wobble mb-12 text-center text-6xl font-bold text-green-800">
         Jardim Digital 🌱
       </h1>
-      <NoteGrid notes={notes} />
+      <Suspense>
+        <NoteGrid notes={notes} />
+      </Suspense>
     </main>
   );
 }

@@ -2,6 +2,7 @@
 
 import { Code, Palette, Smartphone, Tag } from "lucide-react";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 import SearchBar from "@/components/search-bar";
 import { useContentFilter } from "@/hooks/use-content-filter";
@@ -106,7 +107,9 @@ export default function PostGrid({ posts }: PostGridProps) {
             Stop the presses! No news found. Try another scoop!
           </p>
         )}
-        <Pagination currentPage={currentPage} totalPages={totalPages} />
+        <Suspense>
+          <Pagination currentPage={currentPage} totalPages={totalPages} />
+        </Suspense>
       </div>
     </>
   );

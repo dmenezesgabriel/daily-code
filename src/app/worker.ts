@@ -82,18 +82,22 @@ self.addEventListener("message", async (event) => {
 
     console.log("Generated prompt:", prompt);
 
-    const output = await generator(prompt, {
+    const output = await generator(prompt as unknown as string, {
       max_new_tokens: 128,
       do_sample: false,
       return_full_text: false,
     });
 
-    console.log("Generated output:", output[0].generated_text);
+    console.log(
+      "Generated output:",
+      (output as unknown as { generated_text: string }[])[0].generated_text,
+    );
 
     self.postMessage({
       status: "complete",
       task: "text-generation",
-      output: output[0].generated_text,
+      output: (output as unknown as { generated_text: string }[])[0]
+        .generated_text,
     });
   }
 });
