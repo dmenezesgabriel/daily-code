@@ -2,8 +2,38 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Sobre",
-  // description: "",
+  title: "Sobre - Gabriel Menezes",
+  description:
+    "Conheça Gabriel Menezes, Correspondente Chefe de Risadas e Mestre dos Trocadilhos no gm.dev. Descubra sua missão, superpoder e curiosidades divertidas.",
+  keywords: [
+    "Gabriel Menezes",
+    "Sobre",
+    "Desenvolvimento Web",
+    "Humor",
+    "Tecnologia",
+  ],
+  openGraph: {
+    title: "Sobre - Gabriel Menezes",
+    description:
+      "Conheça Gabriel Menezes, Correspondente Chefe de Risadas e Mestre dos Trocadilhos no gm.dev. Descubra sua missão, superpoder e curiosidades divertidas.",
+    images: [
+      {
+        url: "https://github.com/dmenezesgabriel.png",
+        width: 800,
+        height: 600,
+        alt: "Foto de perfil de Gabriel Menezes",
+      },
+    ],
+    type: "profile",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@gm_dev",
+    title: "Sobre - Gabriel Menezes",
+    description:
+      "Conheça Gabriel Menezes, Correspondente Chefe de Risadas e Mestre dos Trocadilhos no gm.dev. Descubra sua missão, superpoder e curiosidades divertidas.",
+    images: "https://github.com/dmenezesgabriel.png",
+  },
 };
 
 export default function About() {
