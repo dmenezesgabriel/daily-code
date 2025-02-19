@@ -9,7 +9,23 @@ import PostGrid from "@/components/post-grid";
 import { getAllFrontMatters } from "@/utils/front-matter";
 
 export const metadata: Metadata = {
-  title: "gm|dev",
+  title: "gm|dev - Home",
+  description:
+    "Bem-vindo ao gm|dev, onde você encontra os últimos artigos e explora o Jardim Digital.",
+  keywords: ["gm|dev", "artigos", "Jardim Digital", "desenvolvimento web"],
+  openGraph: {
+    title: "gm|dev - Home",
+    description:
+      "Bem-vindo ao gm|dev, onde você encontra os últimos artigos e explora o Jardim Digital.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@dmenezesgabriel",
+    title: "gm|dev - Home",
+    description:
+      "Bem-vindo ao gm|dev, onde você encontra os últimos artigos e explora o Jardim Digital.",
+  },
 };
 
 export default function Home() {

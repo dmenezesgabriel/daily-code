@@ -6,6 +6,22 @@ import { getAllFrontMatters } from "@/utils/front-matter";
 
 export const metadata: Metadata = {
   title: "Jardim",
+  description:
+    "Explore o Jardim Digital e descubra notas e insights sobre desenvolvimento web e design.",
+  keywords: ["Jardim Digital", "notas", "desenvolvimento web", "design"],
+  openGraph: {
+    title: "Jardim",
+    description:
+      "Explore o Jardim Digital e descubra notas e insights sobre desenvolvimento web e design.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@dmenezesgabriel",
+    title: "Jardim",
+    description:
+      "Explore o Jardim Digital e descubra notas e insights sobre desenvolvimento web e design.",
+  },
 };
 
 export default function GardenPage() {

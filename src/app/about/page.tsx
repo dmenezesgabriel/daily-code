@@ -4,7 +4,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Sobre - Gabriel Menezes",
   description:
-    "Conheça Gabriel Menezes, Correspondente Chefe de Risadas e Mestre dos Trocadilhos no gm|dev. Descubra sua missão, superpoder e curiosidades divertidas.",
+    "Conheça Gabriel Menezes, Correspondente Chefe de Bugs no gm|dev. Descubra sua missão, superpoder e curiosidades.",
   keywords: [
     "Gabriel Menezes",
     "Sobre",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sobre - Gabriel Menezes",
     description:
-      "Conheça Gabriel Menezes, Correspondente Chefe de Risadas e Mestre dos Trocadilhos no gm|dev. Descubra sua missão, superpoder e curiosidades divertidas.",
+      "Conheça Gabriel Menezes, Correspondente Chefe de Bugs no gm|dev. Descubra sua missão, superpoder e curiosidades.",
     images: [
       {
         url: "https://github.com/dmenezesgabriel.png",
@@ -28,10 +28,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@gm_dev",
+    site: "@dmenezesgabriel",
     title: "Sobre - Gabriel Menezes",
     description:
-      "Conheça Gabriel Menezes, Correspondente Chefe de Risadas e Mestre dos Trocadilhos no gm|dev. Descubra sua missão, superpoder e curiosidades divertidas.",
+      "Conheça Gabriel Menezes, Correspondente Chefe de Bugs no gm|dev. Descubra sua missão, superpoder e curiosidades.",
     images: "https://github.com/dmenezesgabriel.png",
   },
 };
@@ -62,10 +62,11 @@ export default function About() {
               Olá, eu sou Gabriel Menezes! 👋
             </h2>
             <p className="mb-4 text-lg">
-              Correspondente Chefe de Risadas e Mestre dos Trocadilhos no{" "}
-              <span className="font-semibold">gm|dev</span>. Estou aqui para
-              trazer os temas tecnológicos mais quentes e hilários, com uma
-              pitada de humor e uma dose geek!
+              Engenheiro de software, caçador de bugs e barista amador no{" "}
+              <span className="font-semibold">gm|dev</span>. Escrevo sobre
+              tecnologia com uma boa dose de humor e um café forte o suficiente
+              para compilar qualquer código na primeira tentativa (ou pelo menos
+              tentar).
             </p>
           </div>
         </section>
@@ -89,9 +90,10 @@ export default function About() {
           </h2>
           <p>
             Tornar o mundo do desenvolvimento web um pouco mais divertido, um
-            artigo de cada vez. Acredito que o riso é o melhor remédio (exceto
-            por remédios reais quando você está doente), e que até o programador
-            mais sério precisa de uma boa risada de vez em quando.
+            artigo de cada vez. Acredito que nem só de commits e pull requests
+            vive um dev — um bom bug às vezes ensina mais do que um tutorial, e
+            um café bem forte é quase tão importante quanto entender o código
+            que você mesmo escreveu semana passada.
           </p>
         </section>
 

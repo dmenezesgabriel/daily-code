@@ -16,6 +16,17 @@ export async function generateMetadata({
   return {
     title: `${frontMatter.title}`,
     description: frontMatter.excerpt,
+    openGraph: {
+      title: `${frontMatter.title}`,
+      description: frontMatter.excerpt,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@dmenezesgabriel",
+      title: `${frontMatter.title}`,
+      description: frontMatter.excerpt,
+    },
   };
 }
 

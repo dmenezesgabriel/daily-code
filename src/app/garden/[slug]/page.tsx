@@ -14,8 +14,19 @@ export async function generateMetadata({
   const frontMatter = getFileFrontMatter("notes", `${slug}.mdx`);
 
   return {
-    title: `${frontMatter.title}`,
+    title: `${frontMatter.title} - Jardim Digital | gm|dev`,
     description: frontMatter.excerpt,
+    openGraph: {
+      title: `${frontMatter.title} - Jardim Digital | gm|dev`,
+      description: frontMatter.excerpt,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@dmenezesgabriel",
+      title: `${frontMatter.title} - Jardim Digital | gm|dev`,
+      description: frontMatter.excerpt,
+    },
   };
 }
 
