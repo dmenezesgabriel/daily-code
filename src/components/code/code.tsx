@@ -1,5 +1,6 @@
-import { JSX } from "react";
+import type { JSX } from "react";
 
+import { CopyButton } from "./copy-button";
 import { getLanguageFromClass, highlight } from "./shared";
 
 interface CodeProps {
@@ -7,11 +8,18 @@ interface CodeProps {
   className?: string;
 }
 
-export async function Code({
-  children,
-  className,
-}: CodeProps): Promise<JSX.Element> {
+export function Code({ children, className }: CodeProps): JSX.Element {
   if (!children) return <pre className={className}>{children}</pre>;
 
-  return highlight(children.trim(), getLanguageFromClass(className));
+  const highlightedCode = highlight(
+    children.trim(),
+    getLanguageFromClass(className),
+  );
+
+  return (
+    <div className="group relative">
+      <CopyButton textToCopy={children} />
+      {highlightedCode}
+    </div>
+  );
 }
