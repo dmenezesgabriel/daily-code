@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 
+import { getCategoryColor } from "@/lib/category-utils";
+
 import { Button } from "./button";
 
 type CardVariant = "post" | "garden";
@@ -90,19 +92,6 @@ function Footer({ date, id, variant = "post" }: CardFooterProps) {
       )}
     </div>
   );
-}
-
-function getCategoryColor(category: string): string {
-  switch (category.toLowerCase()) {
-    case "design":
-      return "bg-pink-400";
-    case "development":
-      return "bg-blue-400";
-    case "ux":
-      return "bg-green-400";
-    default:
-      return "bg-gray-400";
-  }
 }
 
 export const Card = {

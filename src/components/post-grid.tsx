@@ -1,11 +1,11 @@
 "use client";
 
-import { Code, Palette, Smartphone, Tag } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
 import SearchBar from "@/components/search-bar";
 import { useContentFilter } from "@/hooks/use-content-filter";
+import { getCategoryIcon } from "@/lib/category-utils";
 
 import { Card } from "./card";
 import Pagination from "./pagination";
@@ -23,19 +23,6 @@ type PostGridProps = {
 };
 
 const POSTS_PER_PAGE = 3;
-
-function getCategoryIcon(category: string) {
-  switch (category.toLowerCase()) {
-    case "design":
-      return <Palette className="h-8 w-8 text-white" />;
-    case "development":
-      return <Code className="h-8 w-8 text-white" />;
-    case "ux":
-      return <Smartphone className="h-8 w-8 text-white" />;
-    default:
-      return <Tag className="h-8 w-8 text-white" />;
-  }
-}
 
 export default function PostGrid({ posts }: PostGridProps) {
   const {
