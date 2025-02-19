@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="container relative z-10 mx-auto text-center">
         <p className="text-xl">
           <span className="sr-only">Copyright </span>
-          &copy; {year} gm.dev. Todos conhecimentos compartilhados.
+          &copy; {year} gm|dev. Todos conhecimentos compartilhados.
         </p>
         <nav aria-label="Redes sociais" className="mt-4">
           <ul className="flex justify-center space-x-4">

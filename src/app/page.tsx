@@ -9,7 +9,7 @@ import PostGrid from "@/components/post-grid";
 import { getAllFrontMatters } from "@/utils/front-matter";
 
 export const metadata: Metadata = {
-  title: "gm.dev",
+  title: "gm|dev",
 };
 
 export default function Home() {

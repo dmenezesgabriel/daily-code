@@ -4,7 +4,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Sobre - Gabriel Menezes",
   description:
-    "Conheça Gabriel Menezes, Correspondente Chefe de Risadas e Mestre dos Trocadilhos no gm.dev. Descubra sua missão, superpoder e curiosidades divertidas.",
+    "Conheça Gabriel Menezes, Correspondente Chefe de Risadas e Mestre dos Trocadilhos no gm|dev. Descubra sua missão, superpoder e curiosidades divertidas.",
   keywords: [
     "Gabriel Menezes",
     "Sobre",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sobre - Gabriel Menezes",
     description:
-      "Conheça Gabriel Menezes, Correspondente Chefe de Risadas e Mestre dos Trocadilhos no gm.dev. Descubra sua missão, superpoder e curiosidades divertidas.",
+      "Conheça Gabriel Menezes, Correspondente Chefe de Risadas e Mestre dos Trocadilhos no gm|dev. Descubra sua missão, superpoder e curiosidades divertidas.",
     images: [
       {
         url: "https://github.com/dmenezesgabriel.png",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     site: "@gm_dev",
     title: "Sobre - Gabriel Menezes",
     description:
-      "Conheça Gabriel Menezes, Correspondente Chefe de Risadas e Mestre dos Trocadilhos no gm.dev. Descubra sua missão, superpoder e curiosidades divertidas.",
+      "Conheça Gabriel Menezes, Correspondente Chefe de Risadas e Mestre dos Trocadilhos no gm|dev. Descubra sua missão, superpoder e curiosidades divertidas.",
     images: "https://github.com/dmenezesgabriel.png",
   },
 };
@@ -63,7 +63,7 @@ export default function About() {
             </h2>
             <p className="mb-4 text-lg">
               Correspondente Chefe de Risadas e Mestre dos Trocadilhos no{" "}
-              <span className="font-semibold">gm.dev</span>. Estou aqui para
+              <span className="font-semibold">gm|dev</span>. Estou aqui para
               trazer os temas tecnológicos mais quentes e hilários, com uma
               pitada de humor e uma dose geek!
             </p>

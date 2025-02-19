@@ -8,7 +8,7 @@ export default function MdxLayout({ children }: { children: React.ReactNode }) {
       <article className="cartoon-border subtle-card-texture rounded-lg bg-white p-8">
         {children}
         <Link href="/">
-          <Button variant="blog">Back to Home</Button>
+          <Button variant="blog">Voltar para página inicial</Button>
         </Link>
       </article>
     </main>

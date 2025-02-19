@@ -18,7 +18,7 @@ export default function Header() {
         <Link
           href="/"
           className="wobble mb-4 text-4xl font-bold transition-colors hover:text-red-600 md:mb-0"
-          aria-label="gm.dev Home"
+          aria-label="gm|dev Home"
         >
           <div className="flex flex-row">
             <span>gm</span>
