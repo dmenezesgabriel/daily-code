@@ -77,14 +77,14 @@ export default function PostGrid({ posts }: PostGridProps) {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {paginatedPosts.map((post) => (
               <div key={post.id} className="pop-up-hover">
-                <Card.Root variant="post">
-                  <Card.Icon category={post.category} variant="post">
+                <Card.Root variant="blog">
+                  <Card.Icon category={post.category} variant="blog">
                     {getCategoryIcon(post.category)}
                   </Card.Icon>
-                  <Card.Category variant="post">{post.category}</Card.Category>
+                  <Card.Category variant="blog">{post.category}</Card.Category>
                   <Card.Title>{post.title}</Card.Title>
                   <Card.Excerpt>{post.excerpt}</Card.Excerpt>
-                  <Card.Footer variant="post" date={post.date} id={post.id} />
+                  <Card.Footer variant="blog" date={post.date} id={post.id} />
                 </Card.Root>
               </div>
             ))}

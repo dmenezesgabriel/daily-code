@@ -5,7 +5,7 @@ import { getCategoryColor } from "@/lib/category-utils";
 
 import { Button } from "./button";
 
-type CardVariant = "post" | "garden";
+type CardVariant = "blog" | "garden";
 
 type CardRootProps = {
   children: ReactNode;
@@ -34,12 +34,12 @@ function Root({ children }: CardRootProps) {
   );
 }
 
-function Icon({ category, children, variant = "post" }: CardIconProps) {
+function Icon({ category, children, variant = "blog" }: CardIconProps) {
   const baseStyles =
     "cartoon-border mb-4 flex items-center justify-center rounded-full";
-  const sizeStyles = variant === "post" ? "h-16 w-16" : "h-12 w-12";
+  const sizeStyles = variant === "blog" ? "h-16 w-16" : "h-12 w-12";
   const colorStyles =
-    variant === "post" ? getCategoryColor(category) : "bg-green-400";
+    variant === "blog" ? getCategoryColor(category) : "bg-green-400";
 
   return (
     <div className={`${baseStyles} ${sizeStyles} ${colorStyles}`}>
@@ -50,12 +50,12 @@ function Icon({ category, children, variant = "post" }: CardIconProps) {
 
 function Category({
   children,
-  variant = "post",
+  variant = "blog",
 }: {
   children: ReactNode;
   variant?: CardVariant;
 }) {
-  const colorClass = variant === "post" ? "text-red-600" : "text-green-600";
+  const colorClass = variant === "blog" ? "text-red-600" : "text-green-600";
   return (
     <span className={`mb-2 block text-sm font-semibold ${colorClass}`}>
       {children}
@@ -71,25 +71,16 @@ function Excerpt({ children }: { children: ReactNode }) {
   return <p className="mb-4 flex-grow text-gray-700">{children}</p>;
 }
 
-function Footer({ date, id, variant = "post" }: CardFooterProps) {
-  const href = variant === "post" ? `/blog/${id}` : `/garden/${id}`;
+function Footer({ date, id, variant = "blog" }: CardFooterProps) {
+  const href = variant === "blog" ? `/blog/${id}` : `/garden/${id}`;
   return (
     <div className="mt-auto flex items-center justify-between">
       <span className="text-sm text-gray-500">{date}</span>
-      {variant === "post" ? (
-        <Link
-          href={href}
-          className="cartoon-button transform rounded-lg bg-yellow-300 px-4 py-2 font-bold text-gray-900 transition-all duration-200 ease-in-out hover:scale-105 hover:bg-yellow-400 active:scale-95"
-        >
+      <Link href={href}>
+        <Button variant={variant} size="md">
           Leia mais!
-        </Link>
-      ) : (
-        <Link href={href}>
-          <Button variant="garden" size="sm">
-            Explore a nota!
-          </Button>
-        </Link>
-      )}
+        </Button>
+      </Link>
     </div>
   );
 }
