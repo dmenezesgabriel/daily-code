@@ -16,6 +16,10 @@ type Post = {
   excerpt?: string;
   date: string;
   category: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
 };
 
 type PostGridProps = {
@@ -78,11 +82,19 @@ export default function PostGrid({ posts }: PostGridProps) {
             {paginatedPosts.map((post) => (
               <div key={post.id} className="pop-up-hover">
                 <Card.Root variant="blog">
+                  {post.image && (
+                    <Card.Media
+                      src={post.image.src}
+                      alt={post.image.alt}
+                      priority={currentPage === 1}
+                    />
+                  )}
                   <Card.Icon category={post.category} variant="blog">
                     {getCategoryIcon(post.category)}
                   </Card.Icon>
                   <Card.Category variant="blog">{post.category}</Card.Category>
                   <Card.Title>{post.title}</Card.Title>
+
                   <Card.Excerpt>{post.excerpt}</Card.Excerpt>
                   <Card.Footer variant="blog" date={post.date} id={post.id} />
                 </Card.Root>

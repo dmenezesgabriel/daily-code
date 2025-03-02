@@ -4,6 +4,11 @@ import path from "path";
 import { Node } from "unist";
 import { remove } from "unist-util-remove";
 
+export interface Image {
+  src: string;
+  alt: string;
+}
+
 export interface Content {
   id: string;
   title: string;
@@ -11,6 +16,7 @@ export interface Content {
   date: string;
   category: string;
   readTime: string;
+  image: Image;
 }
 
 function calculateReadingTime(content: string) {
@@ -36,6 +42,7 @@ export function getFileFrontMatter(folder: string, filename: string) {
     title: frontMatter.title,
     date: frontMatter.date,
     category: frontMatter.category,
+    image: frontMatter.image,
     readTime: readTime,
   };
 }

@@ -1,0 +1,253 @@
+---
+title: "O Guia Definitivo de Performance em React"
+date: "2023-05-20"
+category: "Desenvolvimento"
+image:
+  src: "./daily-code/assets/images/react-performance-hooks.png"
+  alt: ""
+---
+
+Já se perguntou por que às vezes sua aplicação React parece estar correndo uma maratona com chinelos? 🏃‍♂️ Bem, você não está sozinho! Vamos mergulhar nos segredos da performance em React e transformar sua aplicação em um verdadeiro corredor olímpico. 🏅
+
+## O Mágico Algoritmo de Reconciliação
+
+Antes de mais nada, precisamos entender como o React faz sua mágica por baixo dos panos. O processo de reconciliação é como um maestro organizando uma orquestra digital:
+
+1. Primeiro, o React cria uma DOM virtual (VDOM) - imagine isso como um rascunho do que sua UI deveria ser
+2. Em seguida, ele compara esse rascunho com a DOM atual usando um algoritmo de diferenciação
+3. Por fim, atualiza apenas o que realmente mudou, como um cirurgião preciso 🔪
+
+```jsx
+// Exemplo de como o React vê suas mudanças
+const previousState = <UserProfile name="John" role="developer" />;
+const currentState = <UserProfile name="John" role="senior developer" />;
+// React: "Hmm, só preciso atualizar o texto do role, o resto permanece!"
+```
+
+### Componentes Funcionais Puros: A Base da Previsibilidade
+
+Antes de mergulhar no `memo`, vamos entender o que são componentes puros. São componentes que, para as mesmas props, sempre retornam o mesmo resultado - como uma função matemática bem comportada:
+
+```jsx
+// ✅ Componente Puro
+const PriceDisplay = ({ price, currency }) => (
+  <span>
+    {currency}
+    {price.toFixed(2)}
+  </span>
+);
+
+// ❌ Componente Impuro - depende de estado externo
+const CurrentTimeDisplay = () => <span>{new Date().toLocaleTimeString()}</span>;
+```
+
+## memo: Seu Melhor Amigo na Otimização
+
+O `memo` é como um segurança VIP para seus componentes. Ele impede re-renderizações desnecessárias, mas não saia usando em todo lugar! Use com sabedoria nos seguintes casos:
+
+### Quando Usar memo:
+
+1. Em componentes funcionais puros (que sempre retornam o mesmo resultado para as mesmas props)
+2. Componentes que renderizam frequentemente
+3. Componentes que recebem as mesmas props repetidamente
+4. Componentes de tamanho médio para grande
+
+```jsx
+const ProductList = memo(({ products, onProductClick }) => {
+  return (
+    <div className="grid grid-cols-3 gap-4">
+      {products.map((product) => (
+        <ProductCard key={product.id} {...product} onClick={onProductClick} />
+      ))}
+    </div>
+  );
+});
+
+// Uso do componente
+const ProductPage = () => {
+  const [products, setProducts] = useState([]);
+
+  // Este callback só muda se realmente precisar
+  const handleProductClick = useCallback((productId) => {
+    console.log(`Product ${productId} clicked`);
+  }, []);
+
+  return (
+    <ProductList products={products} onProductClick={handleProductClick} />
+  );
+};
+```
+
+## A Arte da Comparação Rasa (Shallow Comparison)
+
+Aqui está onde as coisas ficam interessantes! React usa comparação rasa por padrão, e isso é mais importante que muitos percebem:
+
+### Igualdade Referencial: Os Gêmeos 🤔
+
+```jsx
+// Primitivos: Gêmeos idênticos
+const userId = 42;
+const anotherUserId = 42;
+console.log(userId === anotherUserId); // true, são literalmente idênticos!
+
+// Objetos: Gêmeos que apenas se vestem igual
+const user1 = { id: 42, name: "Alice" };
+const user2 = { id: 42, name: "Alice" };
+console.log(user1 === user2); // false, parecem iguais mas são pessoas diferentes!
+
+// Solução: Clone memorizado
+const userRef = useMemo(() => ({ id: 42, name: "Alice" }), []);
+```
+
+## useMemo: O bicho preguiça
+
+Pense no `useMemo` como aquele pessoa que acorda e fica o dia todo de pijama uma vez que a noite voltara a dormir. Muito útil quando:
+
+1. Você tem cálculos pesados que não precisam ser refeitos a cada renderização
+2. Precisa manter a referência de objetos estável
+
+```jsx
+const Dashboard = ({ transactions }) => {
+  const expensiveStats = useMemo(
+    () => ({
+      total: transactions.reduce((sum, t) => sum + t.amount, 0),
+      average:
+        transactions.reduce((sum, t) => sum + t.amount, 0) /
+        transactions.length,
+      maxTransaction: Math.max(...transactions.map((t) => t.amount)),
+      recentTransactions: transactions.slice(-5).map((t) => t.amount),
+    }),
+    [transactions],
+  );
+
+  return (
+    <div>
+      <StatsDisplay stats={expensiveStats} />
+      <TransactionList transactions={transactions} />
+    </div>
+  );
+};
+```
+
+## useCallback: O Valet das Funções
+
+`useCallback` é como um serviço de valet parking para suas funções. Ele guarda a referência da sua função e só cria uma nova quando realmente necessário. Ou seja, quando chegar um carro mais caro no pedaço o seu fusquinha 87 pode acabar indo para outra vaga.
+
+### Casos de Uso Perfeitos:
+
+1. Funções passadas como props para componentes memorizados
+2. Funções usadas em efeitos
+3. Funções que precisam manter sua identidade entre renderizações
+
+```jsx
+const SearchComponent = () => {
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
+
+  const handleSearch = useCallback(async (searchQuery) => {
+    try {
+      const response = await api.search(searchQuery);
+      setResults(response.data);
+    } catch (error) {
+      console.error("Search failed:", error);
+    }
+  }, []); // Função estável que não precisa ser recriada
+
+  const debouncedSearch = useMemo(
+    () => debounce(handleSearch, 300),
+    [handleSearch],
+  );
+
+  return (
+    <div>
+      <SearchInput
+        value={query}
+        onChange={(e) => {
+          setQuery(e.target.value);
+          debouncedSearch(e.target.value);
+        }}
+      />
+      <SearchResults results={results} />
+    </div>
+  );
+};
+```
+
+## Exemplos Práticos de Componentes Puros
+
+Vamos ver alguns exemplos práticos de componentes puros vs. impuros e como isso afeta a performance:
+
+```jsx
+// ✅ Componente Puro - Perfeito para memo!
+const UserAvatar = memo(({ user, size = 'md' }) => {
+  const dimensions = {
+    sm: 32,
+    md: 48,
+    lg: 64
+  }[size];
+
+  return (
+    <img
+      src={user.avatarUrl}
+      alt={`${user.name}'s avatar`}
+      width={dimensions}
+      height={dimensions}
+      className="rounded-full"
+    />
+  );
+});
+
+// ❌ Componente Impuro - Evite isso!
+const UserStatus = ({ userId }) => {
+  // Estado externo torna o componente impuro
+  const [isOnline, setIsOnline] = useState(false);
+
+  useEffect(() => {
+    // Dependência externa de websocket
+    const ws = new WebSocket('ws://api.example.com');
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      if (data.userId === userId) {
+        setIsOnline(data.online);
+      }
+    };
+    return () => ws.close();
+  }, [userId]);
+
+  return (
+    <div className={`status-dot ${isOnline ? 'bg-green-500' : 'bg-gray-400'}`} />
+  );
+});
+
+// ✅ Versão Pura Refatorada - Agora sim!
+const UserStatus = memo(({ isOnline }) => (
+  <div className={`status-dot ${isOnline ? 'bg-green-500' : 'bg-gray-400'}`} />
+));
+
+// Componente pai gerencia o estado
+const UserStatusContainer = ({ userId }) => {
+  const [isOnline, setIsOnline] = useState(false);
+
+  useEffect(() => {
+    // Lógica do WebSocket movida para o container
+    const ws = new WebSocket('ws://api.example.com');
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      if (data.userId === userId) {
+        setIsOnline(data.online);
+      }
+    };
+    return () => ws.close();
+  }, [userId]);
+
+  return <UserStatus isOnline={isOnline} />;
+};
+```
+
+Este padrão de separar a lógica de estado do componente de apresentação é conhecido como "Container/Presentational Pattern" e é uma excelente maneira de criar componentes puros e otimizáveis! 🎯
+
+## Conclusão
+
+Performance em React não precisa ser um bicho de sete cabeças! Com essas ferramentas no seu cinto de utilidades, você está pronto para criar aplicações mais rápidas que um Fusca turbinado! 🚀
+
+Lembre-se: otimização prematura é a raiz de todo mal. Use estas técnicas com sabedoria e apenas quando necessário. Afinal, o melhor código é aquele que funciona bem e é fácil de manter!

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
 
@@ -71,6 +72,35 @@ function Excerpt({ children }: { children: ReactNode }) {
   return <p className="mb-4 flex-grow text-gray-700">{children}</p>;
 }
 
+type CardMediaProps = {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  priority?: boolean;
+};
+
+function Media({
+  src,
+  alt,
+  width = 800,
+  height = 400,
+  priority = false,
+}: CardMediaProps) {
+  return (
+    <div className="mb-4 overflow-hidden rounded-lg">
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        priority={priority}
+        className="h-auto w-full object-cover transition-transform duration-300 hover:scale-105"
+      />
+    </div>
+  );
+}
+
 function Footer({ date, id, variant = "blog" }: CardFooterProps) {
   const href = variant === "blog" ? `/blog/${id}` : `/garden/${id}`;
   return (
@@ -91,5 +121,6 @@ export const Card = {
   Category,
   Title,
   Excerpt,
+  Media,
   Footer,
 };
