@@ -34,6 +34,7 @@ const nextConfig: NextConfig = {
   },
   output: "export",
   basePath: "/daily-code",
+  assetPrefix: "/daily-code",
 };
 
 export default withMDX(nextConfig);
